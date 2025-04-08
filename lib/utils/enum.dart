@@ -36,7 +36,6 @@ enum ReadingTypeEnum {
   responseAfterSecond,
   sequence,
   gospelAcclaimation,
-  antiphon,
   gospel,
   verseBeforeTheGospel,
 }

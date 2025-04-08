@@ -8,6 +8,7 @@ import 'package:missal_calculation/catholic_date/minor_feast/minor_feast_model.d
 import 'package:missal_calculation/catholic_date/solemnities/solemnities_model.dart';
 import 'package:missal_calculation/catholic_date/vigils_and_multiple_masses.dart';
 import 'package:missal_calculation/extension/date_extension.dart';
+import 'package:missal_calculation/extension/string_extension.dart';
 import 'package:missal_calculation/utils/enum.dart';
 import 'package:missal_calculation/extension/enum_extensions.dart';
 import 'package:missal_calculation/missal_model.dart';
@@ -29,32 +30,97 @@ export 'utils/enum.dart';
 export 'extension/int_extension.dart';
 
 class MissalCalculation {
-  static List<MissalModel> getReadings(DateTime dateTime,
-      {String countryCode = "ng"}) {
+  late int _initializedYear;
+  late LiturgicalDates _liturgicalDates;
+
+  String get countryCode => _liturgicalDates.countryCode;
+
+  bool get isEpiphanyFixed => _liturgicalDates.isEpiphanyFixed;
+
+  bool get isAscensionThurs => _liturgicalDates.isAscensionThurs;
+
+  int get currentInitializedYear => _initializedYear;
+
+  /// Creates a new instance of [MissalCalculation] with optional configuration.
+  ///
+  /// By default:
+  /// - The [countryCode] is set to `"ng"` (Nigeria).
+  /// - Epiphany is **not** fixed (i.e., it is moved to the nearest Sunday).
+  /// - Ascension is celebrated on a **Thursday**.
+  /// - [dateTime] defaults to the **current date**.
+  ///
+  /// These defaults reflect the liturgical calendar practice in Nigeria.
+  /// You can override them by passing custom values for [countryCode],
+  /// [isEpiphanyFixed], and [isAscensionThurs].
+  MissalCalculation({
+    DateTime? dateTime,
+    String countryCode = "ng",
+    bool? isEpiphanyFixed,
+    bool? isAscensionThurs,
+  }) {
+    _initialize(
+      (dateTime ?? DateTime.now()).onlyDate.year,
+      countryCode,
+      isEpiphanyFixed,
+      isAscensionThurs,
+    );
+  }
+
+  void _initialize(
+    int year,
+    String countryCode, [
+    bool? isEpiphanyFixed,
+    bool? isAscensionThurs,
+  ]) {
+    final (bool, bool) epiphanyAndAscensionFix =
+        countryCode.epiphanyAndAscensionSettings;
+    _liturgicalDates = LiturgicalDates(
+      isEpiphanyFixed: isEpiphanyFixed ?? epiphanyAndAscensionFix.$1,
+      isAscensionThurs: isAscensionThurs ?? epiphanyAndAscensionFix.$2,
+      countryCode: countryCode,
+    );
+    _liturgicalDates.initialize(year);
+    _initializedYear = year;
+  }
+
+  // Method to change country code
+  void updateCountryCode(String newCountryCode) {
+    if (_liturgicalDates.countryCode != newCountryCode) {
+      _initialize(_initializedYear, newCountryCode);
+    }
+  }
+
+  // Method to change Epiphany or Ascension settings
+  void updateLiturgicalSettings(
+      {bool? isEpiphanyFixed, bool? isAscensionThurs}) {
+    bool epiphanyFixed = isEpiphanyFixed ?? _liturgicalDates.isEpiphanyFixed;
+    bool ascensionThurs = isAscensionThurs ?? _liturgicalDates.isAscensionThurs;
+    _liturgicalDates = LiturgicalDates(
+      isEpiphanyFixed: epiphanyFixed,
+      isAscensionThurs: ascensionThurs,
+      countryCode: _liturgicalDates.countryCode,
+    );
+    _liturgicalDates.initialize(_initializedYear);
+  }
+
+  List<MissalModel> getReadings(DateTime dateTime) {
     final DateTime date = dateTime.onlyDate;
-    _initializeDates(date, countryCode: countryCode);
+    if (dateTime.year != _initializedYear){
+      _liturgicalDates.initialize(date.year);
+      _initializedYear = date.year;
+    }
     MissalModel? model;
     // If its a solemnity or major feast
     final MissalModel? solemnityMissal = _getSolemnity(date);
     if (solemnityMissal != null) {
       model = solemnityMissal;
     } else {
-      model = _liturgicalYearReadings(date, countryCode: countryCode);
+      model = _liturgicalYearReadings(date);
     }
     return VigilsAndMultipleMasses(model).fetchAllReadings();
   }
 
-  static void _initializeDates(DateTime date, {String countryCode = "ng"}) {
-    final instance = LiturgicalDates(
-      isEpiphanyFixed: false,
-      isAscensionThurs: true,
-      countryCode: countryCode,
-    );
-    instance.initialize(date.year);
-  }
-
-  static MissalModel _liturgicalYearReadings(DateTime date,
-      {String countryCode = "ng"}) {
+  MissalModel _liturgicalYearReadings(DateTime date) {
     // New year - Baptism
     final (DateTime, DateTime) newYearToBaptismRange =
         AdventToBaptismCalc.christmasToBaptismRange(date.year, true);
@@ -101,7 +167,7 @@ class MissalCalculation {
     }
   }
 
-  static MissalModel? _getSolemnity(DateTime date) {
+  MissalModel? _getSolemnity(DateTime date) {
     final List<SolemnityAndMajorFeastModel> solemnities =
         generateSolemnities(date);
     final int? index = solemnities.containsDate(date);
@@ -114,7 +180,7 @@ class MissalCalculation {
   }
 
   /// To get the minor feast for the day
-  static MissalModel? _getMinorFeast(DateTime date, MissalModel model) {
+  MissalModel? _getMinorFeast(DateTime date, MissalModel model) {
     if (date.weekday == 7) {
       return model;
     } else {
@@ -139,7 +205,7 @@ class MissalCalculation {
   }
 
   /// To get the memorials (obligatory or optional) for the day
-  static MissalModel _getMemorials(DateTime date, MissalModel model) {
+  MissalModel _getMemorials(DateTime date, MissalModel model) {
     // final bool isLent = model.season == SeasonEnum.lent;
     if (date.weekday == 7) {
       return model;
@@ -179,7 +245,7 @@ class MissalCalculation {
     }
   }
 
-  static MissalModel _getFeastOrMemorial(DateTime date, MissalModel model) {
+  MissalModel _getFeastOrMemorial(DateTime date, MissalModel model) {
     final MissalModel? isFeastModel = _getMinorFeast(date, model);
     if (isFeastModel != null) {
       return isFeastModel;
@@ -189,8 +255,7 @@ class MissalCalculation {
   }
 
   /// This checks for the readings that happen between new year and the baptism
-  static MissalModel _newYearToBaptism(
-      (DateTime, DateTime) range, DateTime date) {
+  MissalModel _newYearToBaptism((DateTime, DateTime) range, DateTime date) {
     final DateTime epiphany =
         LiturgicalDates.instance.getDate(LiturgicDatesEnum.epiphany);
     int? days;
@@ -214,7 +279,7 @@ class MissalCalculation {
 
   /// This checks for the readings that happen between the first day of
   /// ordinary time (day after baptism) and the tuesday before the ash wednesday
-  static MissalModel _baptismToBeforeAshWednesday(
+  MissalModel _baptismToBeforeAshWednesday(
       (DateTime, DateTime) range, DateTime date) {
     final List<(DateTime, DateTime)> weeksInRange = findWeeksInRange(range);
     final bool isSunday = date.weekday == 7;
@@ -243,7 +308,7 @@ class MissalCalculation {
 
   /// This checks for the readings that happen between ash wednesday and
   /// holy saturday
-  static MissalModel _ashWednesdayToHolySaturday(
+  MissalModel _ashWednesdayToHolySaturday(
       (DateTime, DateTime) range, DateTime date) {
     final List<(DateTime, DateTime)> weeksInRange = findWeeksInRange(range);
     final bool isSunday = date.weekday == 7;
@@ -300,8 +365,7 @@ class MissalCalculation {
 
   /// This checks for the readings that happen between easter and the day
   /// before pentecost
-  static MissalModel _easterToPentecost(
-      (DateTime, DateTime) range, DateTime date) {
+  MissalModel _easterToPentecost((DateTime, DateTime) range, DateTime date) {
     final List<(DateTime, DateTime)> weeksInRange = findWeeksInRange(range);
     final bool isSunday = date.weekday == 7;
     final SundayYearEnum sundayYear = findSundayYear(date.year);
@@ -335,8 +399,7 @@ class MissalCalculation {
 
   /// This checks for the readings that happen between pentecost and the
   /// saturday before the first sunday of advent
-  static MissalModel _pentecostToAdvent(
-      (DateTime, DateTime) range, DateTime date) {
+  MissalModel _pentecostToAdvent((DateTime, DateTime) range, DateTime date) {
     final List<(DateTime, DateTime)> weeksInRange = findWeeksInRange(range);
     final bool isSunday = date.weekday == 7;
     final SundayYearEnum sundayYear = findSundayYear(date.year);
@@ -370,8 +433,7 @@ class MissalCalculation {
 
   /// This checks for the readings that happen between the first sunday of
   /// advent and christmas eve
-  static MissalModel _adventToChristmasEve(
-      (DateTime, DateTime) range, DateTime date) {
+  MissalModel _adventToChristmasEve((DateTime, DateTime) range, DateTime date) {
     final List<(DateTime, DateTime)> weeksInRange = findWeeksInRange(range);
     final bool isSunday = date.weekday == 7;
     final SundayYearEnum sundayYear = findSundayYear(date.year + 1);
@@ -404,7 +466,7 @@ class MissalCalculation {
 
   /// This checks for the readings that happen between christmas and
   /// the last day of the year
-  static MissalModel _xmasToYearEnd((DateTime, DateTime) range, DateTime date) {
+  MissalModel _xmasToYearEnd((DateTime, DateTime) range, DateTime date) {
     LiturgicDayReading? reading;
 
     final int daysAfterOctave =

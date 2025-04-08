@@ -42,7 +42,6 @@ class ReadingModel {
       ReadingTypeEnum.gospel => '\x1B[31m', // Red
       ReadingTypeEnum.responseAfterSecond => '\x1B[35m', // Magenta
       ReadingTypeEnum.sequence => '\x1B[36m', // Cyan
-      ReadingTypeEnum.antiphon => '\x1B[91m', // Bright Red
       ReadingTypeEnum.gospelAcclaimation => '\x1B[93m', // Bright Yellow
       ReadingTypeEnum.verseBeforeTheGospel => '\x1B[95m', // Bright Yellow
     };

@@ -32,7 +32,7 @@ class LiturgicalDates {
   // Factory constructor ensures a single instance with required initialization
   factory LiturgicalDates(
       {required bool isEpiphanyFixed, required bool isAscensionThurs, String countryCode = "ng"}) {
-    _instance ??= LiturgicalDates._internal(
+    _instance = LiturgicalDates._internal(
       isEpiphanyFixed: isEpiphanyFixed,
       isAscensionThurs: isAscensionThurs,
       countryCode: countryCode,
@@ -40,7 +40,7 @@ class LiturgicalDates {
     return _instance!;
   }
 
-  // Internal constructor to set `isEpiphanyFixed`
+  // Internal constructor
   LiturgicalDates._internal(
       {required this.isEpiphanyFixed, required this.isAscensionThurs, this.countryCode = "ng"});
 
