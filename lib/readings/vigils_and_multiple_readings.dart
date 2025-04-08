@@ -707,6 +707,12 @@ List<MissalModel> krOtherChristmasReadings(MissalModel model) {
               "and he shall be to me a son”? And again, when he brings the first-born into the world, he says, “Let all God’s angels worship him.”",
         ),
         const ReadingModel(
+          title: "",
+          readingType: ReadingTypeEnum.gospelAcclaimation,
+          response: "Alleluia Alleluia",
+          text: "A holy day has dawned upon us. Come, you nations, and adore the Lord. For today a great light has come upon the earth.",
+        ),
+        const ReadingModel(
           title: "John 1:1-18",
           readingType: ReadingTypeEnum.gospel,
           text:
