@@ -1544,7 +1544,7 @@ J: “The kings of the Gentiles exercise lordship over them; and those in author
 N: And he said to him,
 S: “Lord, I am ready to go with you to prison and to death.”
 N: He said,
-J: I tell you, Peter, the cock will not crow this day, until you three times deny that you know me.”
+J: “I tell you, Peter, the cock will not crow this day, until you three times deny that you know me.”
 N: And he said to them,
 J: “When I sent you out with no purse or bag or sandals, did you lack anything?”
 N: They said,
@@ -1600,7 +1600,7 @@ S: “We found this man perverting our nation, and forbidding us to give tribute
 N: And Pilate asked him,
 S: “Are you the King of the Jews?”
 N: And he answered him,
-S: “You have said so.”
+J: “You have said so.”
 N: And Pilate said to the chief priests and the multitudes,
 S: “I find no crime in this man.”
 N: But they were urgent, saying,

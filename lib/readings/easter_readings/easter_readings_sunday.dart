@@ -1033,9 +1033,9 @@ List<LiturgicDayReading> krEasterSundayReadingsC(bool isAscensionOnThurs) => [
                 "“Feed my lambs.” A second time he said to him, “Simon, son of John, do you love me?” He said to him, “Yes, Lord; you know that "
                 "I love you.” He said to him, “Tend my sheep.” He said to him the third time, “Simon, son of John, do you love me?” Peter was "
                 "grieved because he said to him the third time, “Do you love me?” And he said to him, “Lord, you know everything; you know that "
-                "I love you.” Jesus said to him, “Feed my sheep. Truly, truly, I say to you, when you were young, you girded yourself and walked "
-                "where you would; but when you are old, you will stretch out your hands, and another will gird you and carry you where you do not "
-                "wish to go.” (This he said to show by what death he was to glorify God.) And after this he said to him, “Follow me.”",
+                "I love you.” Jesus said to him, “Feed my sheep. Truly, truly, I say to you, when you were young, you fastened your own belt and "
+                "walked where you would; but when you are old, you will stretch out your hands, and another will fasten your belt for you and carry you where "
+                "you do not wish to go” (This he said to show by what death he was to glorify God.) And after this he said to him, “Follow me.”",
           ),
           ReadingModel(
             title: "John 21:1-14",
@@ -1440,7 +1440,7 @@ const LiturgicDayReading _easterReading = LiturgicDayReading(
       title: "Colossians 3:1-4",
       readingType: ReadingTypeEnum.second,
       text: "Brethren: If then you have been raised with Christ, seek the things that are above, where Christ is, seated at the right hand of God. "
-          "Set your minds on things that are above, not on things that are on earth. For you have died, and your life is hid with Christ in God. "
+          "Set your minds on things that are above, not on things that are on earth. For you have died, and your life is hidden with Christ in God. "
           "When Christ who is our life appears, then you also will appear with him in glory.",
     ),
     ReadingModel(

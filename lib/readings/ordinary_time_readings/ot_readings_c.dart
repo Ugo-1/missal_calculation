@@ -696,10 +696,10 @@ const List<LiturgicDayReading> krOrdinaryTimeSundayC = [
       ReadingModel(
         title: "Isaiah 66:10-14c",
         readingType: ReadingTypeEnum.first,
-        text: "Thus says the Lord: “Rejoice with Jerusalem, and be glad for her, all you who love her; rejoice with her in joy, all you who mourn "
+        text: "“Rejoice with Jerusalem, and be glad for her, all you who love her; rejoice with her in joy, all you who mourn "
             "over her; that you may suck and be satisfied with her consoling breasts; that you may drink deeply with delight from the abundance of "
             "her glory.” For thus says the Lord: “Behold, I will extend prosperity to her like a river, and the wealth of the nations like an "
-            "overflowing stream; and you shall suck, you shall be carried upon her hip, and dandled upon her knees. As one whom his mother comforts, "
+            "overflowing stream; and you shall suck, you shall be carried upon her hip, and fondled upon her knees. As one whom his mother comforts, "
             "so I will comfort you; you shall be comforted in Jerusalem. You shall see, and your heart shall rejoice; your bones shall flourish "
             "like the grass; and it shall be known that the hand of the Lord is with his servants.”",
       ),

@@ -592,7 +592,7 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Romans 5:1-5",
                   readingType: ReadingTypeEnum.second,
-                  text: "brethren: Since we are justified by faith, we have peace with God through our Lord Jesus Christ. Through him we have obtained access to this grace "
+                  text: "Brethren: Since we are justified by faith, we have peace with God through our Lord Jesus Christ. Through him we have obtained access to this grace "
                       "in which we stand, and we rejoice in our hope of sharing the glory of God. More than that, we rejoice in our sufferings, knowing that suffering "
                       "produces endurance, and endurance produces character, and character produces hope, and hope does not disappoint us, because God’s love has been poured "
                       "into our hearts through the Holy Spirit who has been given to us.",
@@ -946,7 +946,7 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Genesis 14:18-20",
                   readingType: ReadingTypeEnum.first,
-                  text: "Melchiz′edek king of Salem brought out bread and wine; he was priest of God Most High. And he blessed him and said, “Blessed be Abram by God Most "
+                  text: "Melchiz′edek king of Salem brought out bread and wine; he was priest of God Most High. And he blessed Abram and said, “Blessed be Abram by God Most "
                       "High, maker of heaven and earth; and blessed be God Most High, who has delivered your enemies into your hand!” And Abram gave him a tenth of "
                       "everything.",
                 ),
@@ -963,9 +963,9 @@ Fellow heirs and guests to be. Amen. Alleluia.
                   title: "1 Corinthians 11:23-26",
                   readingType: ReadingTypeEnum.second,
                   text: "Brethren: I received from the Lord what I also delivered to you, that the Lord Jesus on the night when he was betrayed took bread, and when he had "
-                      "given thanks, he broke it, and said, “This is my body which is for you. Do this in remembrance of me.” In the same way also the cup, after supper, "
-                      "saying, “This cup is the new covenant in my blood. Do this, as often as you drink it, in remembrance of me.” For as often as you eat this bread and "
-                      "drink the cup, you proclaim the Lord’s death until he comes.",
+                      "given thanks, he broke it, and said, “This is my body which is for you. Do this in remembrance of me.” In the same way also the chalice, after supper, "
+                      "saying, “This chalice is the new covenant in my blood. Do this, as often as you drink it, in remembrance of me.” For as often as you eat this bread and "
+                      "drink the chalice, you proclaim the Lord’s death until he comes.",
                 ),
                 const ReadingModel(
                   title: "Lauda Sion",

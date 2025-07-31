@@ -1913,8 +1913,8 @@ Map<int, List<LiturgicDayReading>> krEasternWeekday(SundayYearEnum sunday) => {
                   "time he said to him, “Simon, son of John, do you love me?” He said to him, “Yes, Lord; you know that I love you.” He said to "
                   "him, “Tend my sheep.” He said to him the third time, “Simon, son of John, do you love me?” Peter was grieved because he said to "
                   "him the third time, “Do you love me?” And he said to him, “Lord, you know everything; you know that I love you.” Jesus said to him, "
-                  "“Feed my sheep. Truly, truly, I say to you, when you were young, you girded yourself and walked where you would; but when you are "
-                  "old, you will stretch out your hands, and another will gird you and carry you where you do not wish to go.” (This he said to show "
+                  "“Feed my sheep. Truly, truly, I say to you, when you were young, you fastened your own belt and walked where you would; but when you are "
+                  "old, you will stretch out your hands, and another will fasten your belt for you and carry you where you do not wish to go.” (This he said to show "
                   "by what death he was to glorify God.) And after this he said to him, “Follow me.”",
             ),
           ],
