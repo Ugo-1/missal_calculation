@@ -1,20 +1,26 @@
 import 'package:missal_calculation/catholic_date/calculations/liturgical_dates.dart';
 
 class EasterToCTKCalc {
-  static final LiturgicalDates liturgicalDates = LiturgicalDates.instance;
-  static final DateTime _pentecost =
-      liturgicalDates.getDate(LiturgicDatesEnum.pentecost);
+  final LiturgicalDates _liturgicalDates;
 
-  static (DateTime, DateTime) easterToPentecostRange() {
+  /// Allows passing a specific instance for testing, distinct from the singleton.
+  EasterToCTKCalc([LiturgicalDates? liturgicalDates])
+      : _liturgicalDates = liturgicalDates ?? LiturgicalDates.instance;
+
+  DateTime get _pentecost =>
+      _liturgicalDates.getDate(LiturgicDatesEnum.pentecost);
+  DateTime get _easter => _liturgicalDates.getDate(LiturgicDatesEnum.easter);
+  DateTime get _advent =>
+      _liturgicalDates.getDate(LiturgicDatesEnum.firstSundayOfAdvent);
+
+  (DateTime, DateTime) easterToPentecostRange() {
     final DateTime lastDay = _pentecost.subtract(const Duration(days: 1));
-    return (liturgicalDates.getDate(LiturgicDatesEnum.easter), lastDay);
+    return (_easter, lastDay);
   }
 
-  static (DateTime, DateTime) pentecostToAdventRange() {
+  (DateTime, DateTime) pentecostToAdventRange() {
     final DateTime firstDay = _pentecost;
-    final DateTime lastDay = liturgicalDates
-        .getDate(LiturgicDatesEnum.firstSundayOfAdvent)
-        .subtract(const Duration(days: 1));
+    final DateTime lastDay = _advent.subtract(const Duration(days: 1));
     return (firstDay, lastDay);
   }
 }

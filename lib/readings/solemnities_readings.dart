@@ -9,10 +9,14 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
     final SundayYearEnum sundayYear = findSundayYear(date.year);
     final SundayYearEnum sundayYearForAdvent = findSundayYear(date.year + 1);
     final (DateTime, DateTime) ashWedToHolySaturdayRange =
-    BaptismToEasterCalc.ashWednesdayToHolySaturdayRange();
+        BaptismToEasterCalc().ashWednesdayToHolySaturdayRange();
     final bool isLentSeason = dateIsInRange(date, ashWedToHolySaturdayRange);
-    final ReadingTypeEnum gospelAcclaimationType = isLentSeason ? ReadingTypeEnum.verseBeforeTheGospel : ReadingTypeEnum.gospelAcclaimation;
-    final String gospelAcclaimationResponse = isLentSeason ? "Glory and praise to you, O Christ." : "Alleluia, Alleluia.";
+    final ReadingTypeEnum gospelAcclaimationType = isLentSeason
+        ? ReadingTypeEnum.verseBeforeTheGospel
+        : ReadingTypeEnum.gospelAcclaimation;
+    final String gospelAcclaimationResponse = isLentSeason
+        ? "Glory and praise to you, O Christ."
+        : "Alleluia, Alleluia.";
     return switch (this) {
       SolemnitiesAndMajorFeastEnum.maryMotherOfGod => MissalModel(
           season: SeasonEnum.solemnity,
@@ -20,7 +24,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "Numbers 6:22-27",
               readingType: ReadingTypeEnum.first,
-              text: "The LORD said to Moses, “Say to Aaron and his sons, Thus you shall bless the people of Israel: you shall say to them, The LORD bless you and keep you: "
+              text:
+                  "The LORD said to Moses, “Say to Aaron and his sons, Thus you shall bless the people of Israel: you shall say to them, The LORD bless you and keep you: "
                   "The LORD make his face to shine upon you, and be gracious to you: The LORD lift up his countenance upon you, and give you peace. “So shall they put my "
                   "name upon the people of Israel, and I will bless them.”",
             ),
@@ -28,28 +33,32 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
               title: "Ps 67:2-3, 5, 6+8",
               readingType: ReadingTypeEnum.responsorial,
               response: "O God be gracious and bless us.",
-              text: "May God be gracious to us and bless us and make his face to shine upon us, that your way may be known upon earth, your saving power among all nations.-"
+              text:
+                  "May God be gracious to us and bless us and make his face to shine upon us, that your way may be known upon earth, your saving power among all nations.-"
                   "Let the nations be glad and sing for joy, for you judge the peoples with equity and guide the nations upon earth.-"
                   "Let the peoples praise you, O God; let all the peoples praise you! God has blessed us; let all the ends of the earth fear him!",
             ),
             const ReadingModel(
               title: "Galatians 4:4-7",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: When the time had fully come, God sent forth his Son, born of woman, born under the law, to redeem those who were under the law, so that we "
+              text:
+                  "Brethren: When the time had fully come, God sent forth his Son, born of woman, born under the law, to redeem those who were under the law, so that we "
                   "might receive adoption as sons. And because you are sons, God has sent the Spirit of his Son into our hearts, crying, “Abba! Father!” So through God you "
                   "are no longer a slave but a son, and if a son then an heir.",
             ),
             ReadingModel(
               title: "Hebrews 1:1-2",
               readingType: gospelAcclaimationType,
-              text: "In many and various ways God spoke of old to our fathers by the prophets; but in these last days he has spoken to us "
+              text:
+                  "In many and various ways God spoke of old to our fathers by the prophets; but in these last days he has spoken to us "
                   "by a Son",
               response: gospelAcclaimationResponse,
             ),
             const ReadingModel(
               title: "Luke 2:16-21",
               readingType: ReadingTypeEnum.gospel,
-              text: "The shepherds went with haste to Bethlehem, and found Mary and Joseph, and the babe lying in a manger. And when they saw it they made known the saying "
+              text:
+                  "The shepherds went with haste to Bethlehem, and found Mary and Joseph, and the babe lying in a manger. And when they saw it they made known the saying "
                   "which had been told them concerning this child; and all who heard it wondered at what the shepherds told them. But Mary kept all these things, pondering "
                   "them in her heart. And the shepherds returned, glorifying and praising God for all they had heard and seen, as it had been told them. And at the end of "
                   "eight days, when he was circumcised, he was called Jesus, the name given by the angel before he was conceived in the womb.",
@@ -65,7 +74,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "Isaiah 60:1-6",
               readingType: ReadingTypeEnum.first,
-              text: "Arise, shine; for your light has come, and the glory of the LORD has risen upon you. For behold, darkness shall cover the earth, and thick darkness the "
+              text:
+                  "Arise, shine; for your light has come, and the glory of the LORD has risen upon you. For behold, darkness shall cover the earth, and thick darkness the "
                   "peoples; but the LORD will arise upon you, and his glory will be seen upon you. And nations shall come to your light, and kings to the brightness of your "
                   "rising. Lift up your eyes round about, and see; they all gather together, they come to you; your sons shall come from far, and your daughters shall be "
                   "carried in the arms. Then you shall see and be radiant, your heart shall thrill and rejoice; because the abundance of the sea shall be turned to you, the "
@@ -75,8 +85,10 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "Ps 72:1-2, 7-8, 10-11, 12-13",
               readingType: ReadingTypeEnum.responsorial,
-              response: "All nations on earth shall fall prostrate before you, O Lord.",
-              text: "Give the king your justice, O God, and your righteousness to the royal son! May he judge your people with righteousness, and your poor with justice!-"
+              response:
+                  "All nations on earth shall fall prostrate before you, O Lord.",
+              text:
+                  "Give the king your justice, O God, and your righteousness to the royal son! May he judge your people with righteousness, and your poor with justice!-"
                   "In his days may righteousness flourish, and peace abound, till the moon be no more! May he have dominion from sea to sea, and from the River to the ends of the earth!-"
                   "May the kings of Tarshish and of the isles render him tribute, may the kings of Sheba and Seba bring gifts! May all kings fall down before him, all nations serve him!-"
                   "For he delivers the needy when he calls, the poor and him who has no helper. He has pity on the weak and the needy, and saves the lives of the needy.",
@@ -84,20 +96,23 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "Ephesians 3:2-3a, 5-6",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: I assume that you have heard of the stewardship of God’s grace that was given to me for you, how the mystery was made known "
+              text:
+                  "Brethren: I assume that you have heard of the stewardship of God’s grace that was given to me for you, how the mystery was made known "
                   "to me by revelation, which was not made known to the sons of men in other generations as it has now been revealed to his holy apostles and prophets by the Spirit; "
                   "that is, how the Gentiles are fellow heirs, members of the same body, and partakers of the promise in Christ Jesus through the gospel.",
             ),
             ReadingModel(
               title: "Matthew 2:2",
               readingType: gospelAcclaimationType,
-              text: "We have seen his star in the East, and have come to worship the Lord.",
+              text:
+                  "We have seen his star in the East, and have come to worship the Lord.",
               response: gospelAcclaimationResponse,
             ),
             const ReadingModel(
               title: "Matthew 2:1-12",
               readingType: ReadingTypeEnum.gospel,
-              text: "Now when Jesus was born in Bethlehem of Judea in the days of Herod the king, behold, wise men from the East came to Jerusalem, saying, “Where is he who "
+              text:
+                  "Now when Jesus was born in Bethlehem of Judea in the days of Herod the king, behold, wise men from the East came to Jerusalem, saying, “Where is he who "
                   "has been born king of the Jews? For we have seen his star in the East, and have come to worship him.” When Herod the king heard this, he was troubled, and "
                   "all Jerusalem with him; and assembling all the chief priests and scribes of the people, he inquired of them where the Christ was to be born. They told "
                   "him, “In Bethlehem of Judea; for so it is written by the prophet: ‘And you, O Bethlehem, in the land of Judah, are by no means least among the rulers of "
@@ -117,17 +132,19 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
           SundayYearEnum.a => MissalModel(
               season: SeasonEnum.solemnity,
               readings: [
-               ..._krBaptismA,
+                ..._krBaptismA,
                 ReadingModel(
                   title: "cf. Mark 9:7",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "The heavens opened and the Father's voice was heard: “This is my beloved Son; listen to him.”",
+                  text:
+                      "The heavens opened and the Father's voice was heard: “This is my beloved Son; listen to him.”",
                 ),
                 const ReadingModel(
                   title: "Matthew 3:13-17",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "Jesus came from Galilee to the Jordan to John, to be baptized by him. John would have prevented him, saying, “I need to be baptized by you, and do "
+                  text:
+                      "Jesus came from Galilee to the Jordan to John, to be baptized by him. John would have prevented him, saying, “I need to be baptized by you, and do "
                       "you come to me?” But Jesus answered him, “Let it be so now; for thus it is fitting for us to fulfil all righteousness.” Then he consented. And when "
                       "Jesus was baptized, he went up immediately from the water, and behold, the heavens were opened and he saw the Spirit of God descending like a dove, "
                       "and alighting on him; and behold, a voice from heaven, saying, “This is my beloved Son, with whom I am well pleased.”",
@@ -143,7 +160,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Isaiah 55:1-11",
                   readingType: ReadingTypeEnum.first,
-                  text: "Thus says the Lord: “Ho, every one who thirsts, come to the waters; and he who has no money, come, buy and eat! Come, buy wine and milk "
+                  text:
+                      "Thus says the Lord: “Ho, every one who thirsts, come to the waters; and he who has no money, come, buy and eat! Come, buy wine and milk "
                       "without money and without price. Why do you spend your money for that which is not bread, and your labor for that which does not satisfy? "
                       "Listen diligently to me, and eat what is good, and delight yourselves in fatness. Incline your ear, and come to me; hear, that your soul may "
                       "live; and I will make with you an everlasting covenant, my steadfast, sure love for David. Behold, I made him a witness to the peoples, a "
@@ -159,15 +177,18 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Isaiah 12:2-3, 4bcd, 5-6",
                   readingType: ReadingTypeEnum.responsorial,
-                  response: "With joy you will draw water from the wells of salvation.",
-                  text: "“Behold, God is my salvation; I will trust, and will not be afraid; for the LORD GOD is my strength and my song, and he has become my salvation.” With joy you will draw water from the wells of salvation.-"
+                  response:
+                      "With joy you will draw water from the wells of salvation.",
+                  text:
+                      "“Behold, God is my salvation; I will trust, and will not be afraid; for the LORD GOD is my strength and my song, and he has become my salvation.” With joy you will draw water from the wells of salvation.-"
                       "“Give thanks to the LORD, call upon his name; make known his deeds among the nations, proclaim that his name is exalted.“-"
                       "“Sing praises to the LORD, for he has done gloriously; let this be known in all the earth. Shout, and sing for joy, O inhabitant of Zion, for great in your midst is the Holy One of Israel.”",
                 ),
                 const ReadingModel(
                   title: "1 John 5:1-9",
                   readingType: ReadingTypeEnum.second,
-                  text: "Beloved: Every one who believes that Jesus is the Christ is a child of God, and every one who loves the parent loves the child. By this we know "
+                  text:
+                      "Beloved: Every one who believes that Jesus is the Christ is a child of God, and every one who loves the parent loves the child. By this we know "
                       "that we love the children of God, when we love God and obey his commandments. For this is the love of God, that we keep his commandments. And his "
                       "commandments are not burdensome. For whatever is born of God overcomes the world; and this is the victory that overcomes the world, our faith. Who "
                       "is it that overcomes the world but he who believes that Jesus is the Son of God? This is he who came by water and blood, Jesus Christ, not with "
@@ -179,12 +200,14 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                   title: "cf. John 1:29",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "John saw Jesus coming towards him, and said, Behold, the Lamb of God, who takes away the sin of the world!",
+                  text:
+                      "John saw Jesus coming towards him, and said, Behold, the Lamb of God, who takes away the sin of the world!",
                 ),
                 const ReadingModel(
                   title: "Mark 1:7-11",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "John preached, saying, “After me comes he who is mightier than I, the thong of whose sandals I am not worthy to "
+                  text:
+                      "John preached, saying, “After me comes he who is mightier than I, the thong of whose sandals I am not worthy to "
                       "stoop down and untie. I have baptized you with water; but he will baptize you with the Holy Spirit. In those days Jesus "
                       "came from Nazareth of Galilee and was baptized by John in the Jordan. And just as he was coming up out of the water, he "
                       "saw the heavens torn apart and the Spirit descending like a dove on him. And a voice came from heaven, “You are my Son, "
@@ -202,7 +225,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Isaiah 40:1-5, 9-11",
                   readingType: ReadingTypeEnum.first,
-                  text: "Comfort, comfort my people, says your God. Speak tenderly to Jerusalem, and cry to her that her "
+                  text:
+                      "Comfort, comfort my people, says your God. Speak tenderly to Jerusalem, and cry to her that her "
                       "warfare is ended, that her iniquity is pardoned, that she has received from the LORD’s hand double "
                       "for all her sins. A voice cries: “In the wilderness prepare the way of the Lord, make straight "
                       "in the desert a highway for our God. Every valley shall be lifted up, and every mountain and hill "
@@ -218,7 +242,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                   title: "Ps 104:1b-2, 3-4, 24-25, 27-28, 29b-30",
                   readingType: ReadingTypeEnum.responsorial,
                   response: "Bless the Lord, O my soul!",
-                  text: "O LORD my God, you are very great! You are clothed with honor and majesty, wrapped in light as with a garment. You stretch out the heavens like a tent.-"
+                  text:
+                      "O LORD my God, you are very great! You are clothed with honor and majesty, wrapped in light as with a garment. You stretch out the heavens like a tent.-"
                       "You have laid the beams of your chambers on the waters, you make the clouds your chariot, you ride on the wings of the wind, you make the winds your messengers, fire and flame your ministers.-"
                       "O LORD, how manifold are your works! In wisdom you have made them all; the earth is full of your creatures. Yonder is the sea, great and wide, which teems with things innumerable, living things both small and great.-"
                       "These all look to you, to give them their food in due season. When you give to them, they gather it up; when you open your hand, they are filled with good things.-"
@@ -227,7 +252,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Titus 2:11-14; 3:4-7",
                   readingType: ReadingTypeEnum.second,
-                  text: "Beloved: For the grace of God has appeared for the salvation of all men, training us to renounce irreligion and worldly passions, and to live sober, "
+                  text:
+                      "Beloved: For the grace of God has appeared for the salvation of all men, training us to renounce irreligion and worldly passions, and to live sober, "
                       "upright, and godly lives in this world, awaiting our blessed hope, the appearing of the glory of our great God and Savior Jesus Christ, who gave "
                       "himself for us to redeem us from all iniquity and to purify for himself a people of his own who are zealous for good deeds. But when the goodness and "
                       "loving kindness of God our Savior appeared, he saved us, not because of deeds done by us in righteousness, but in virtue of his own mercy, by the "
@@ -238,12 +264,14 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                   title: "cf. Luke 3:16",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "John said: He who is coming is mightier than I, he will baptize you with the Holy Spirit and with fire.",
+                  text:
+                      "John said: He who is coming is mightier than I, he will baptize you with the Holy Spirit and with fire.",
                 ),
                 const ReadingModel(
                   title: "Luke 3:15-16, 21-22",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "As the people were in expectation, and all men questioned in their hearts concerning John, whether perhaps he were the Christ, John answered them "
+                  text:
+                      "As the people were in expectation, and all men questioned in their hearts concerning John, whether perhaps he were the Christ, John answered them "
                       "all, “I baptize you with water; but he who is mightier than I is coming, the thong of whose sandals I am not worthy to untie; he will baptize you with "
                       "the Holy Spirit and with fire. Now when all the people were baptized, and when Jesus also had been baptized and was praying, the heaven was opened, and "
                       "the Holy Spirit descended upon him in bodily form, as a dove, and a voice came from heaven, “You are my beloved Son; with you I am well pleased.”",
@@ -261,7 +289,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "Malachi 3:1-4",
               readingType: ReadingTypeEnum.first,
-              text: "Thus says the Lord GOD: “Behold, I send my messenger to prepare the way before me, and the Lord "
+              text:
+                  "Thus says the Lord GOD: “Behold, I send my messenger to prepare the way before me, and the Lord "
                   "whom you seek will suddenly come to his temple; the messenger of the covenant in whom you delight, "
                   "behold, he is coming, says the LORD of hosts. But who can endure the day of his coming, and who "
                   "can stand when he appears? “For he is like a refiner’s fire and like fullers’ soap; he will sit as "
@@ -273,7 +302,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
               title: "Ps 24:7, 8, 9, 10",
               readingType: ReadingTypeEnum.responsorial,
               response: "The Lord of hosts, he is the King of glory!",
-              text: "Lift up your heads, O gates! and be lifted up, O ancient doors! that the King of glory may come in.-"
+              text:
+                  "Lift up your heads, O gates! and be lifted up, O ancient doors! that the King of glory may come in.-"
                   "Who is the King of glory? The Lord, strong and mighty, the Lord, mighty in battle!-"
                   "Lift up your heads, O gates! and be lifted up, O ancient doors! that the King of glory may come in.-"
                   "Who is this King of glory? The Lord of hosts, he is the King of glory!",
@@ -281,7 +311,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "Hebrews 2:14-18",
               readingType: ReadingTypeEnum.second,
-              text: "Since the children share in flesh and blood, Jesus himself likewise partook of the same nature, that through death he might destroy him who has the power of "
+              text:
+                  "Since the children share in flesh and blood, Jesus himself likewise partook of the same nature, that through death he might destroy him who has the power of "
                   "death, that is, the devil, and deliver all those who through fear of death were subject to lifelong bondage. For surely it is not with angels that he is "
                   "concerned but with the descendants of Abraham. Therefore he had to be made like his brethren in every respect, so that he might become a merciful and faithful "
                   "high priest in the service of God, to make expiation for the sins of the people. For because he himself has suffered and been tempted, he is able to help those "
@@ -291,12 +322,14 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
               title: "Luke 2:32",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "A light for revelation to the Gentiles, and for glory to your people Israel.",
+              text:
+                  "A light for revelation to the Gentiles, and for glory to your people Israel.",
             ),
             const ReadingModel(
               title: "Luke 2:22-40",
               readingType: ReadingTypeEnum.gospel,
-              text: "When the time came for their purification according to the law of Moses, the parents of Jesus "
+              text:
+                  "When the time came for their purification according to the law of Moses, the parents of Jesus "
                   "brought him up to Jerusalem to present him to the Lord (as it is written in the law of the Lord, "
                   "“Every male that opens the womb shall be called holy to the Lord”) and to offer a sacrifice "
                   "according to what is said in the law of the Lord, “a pair of turtledoves, or two young pigeons.” "
@@ -320,7 +353,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "Luke 2:22-32",
               readingType: ReadingTypeEnum.gospel,
-              text: "When the time came for their purification according to the law of Moses, the parents of Jesus "
+              text:
+                  "When the time came for their purification according to the law of Moses, the parents of Jesus "
                   "brought him up to Jerusalem to present him to the Lord (as it is written in the law of the Lord, "
                   "“Every male that opens the womb shall be called holy to the Lord”) and to offer a sacrifice "
                   "according to what is said in the law of the Lord, “a pair of turtledoves, or two young pigeons.” "
@@ -344,7 +378,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "2 Samuel 7:4-5a, 12-14a, 16",
               readingType: ReadingTypeEnum.first,
-              text: "The word of the LORD came to Nathan, “Go and tell my servant David, ‘Thus says the LORD: When your days are fulfilled and you lie down with your fathers, "
+              text:
+                  "The word of the LORD came to Nathan, “Go and tell my servant David, ‘Thus says the LORD: When your days are fulfilled and you lie down with your fathers, "
                   "I will raise up your offspring after you, who shall come forth from your body, and I will establish his kingdom. He shall build a house for my name, and I "
                   "will establish the throne of his kingdom for ever. I will be his father, and he shall be my son. And your house and your kingdom shall be made sure for "
                   "ever before me; your throne shall be established for ever.”",
@@ -353,14 +388,16 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
               title: "Ps 89:2-3, 4-5, 27+29",
               readingType: ReadingTypeEnum.responsorial,
               response: "His descendants shall continue for ever.",
-              text: "I will sing of your steadfast love, O LORD, for ever; with my mouth I will proclaim your faithfulness to all generations. For your steadfast love was established for ever, your faithfulness is firm as the heavens.-"
+              text:
+                  "I will sing of your steadfast love, O LORD, for ever; with my mouth I will proclaim your faithfulness to all generations. For your steadfast love was established for ever, your faithfulness is firm as the heavens.-"
                   "“I have made a covenant with my chosen one, I have sworn to David my servant: ‘I will establish your descendants for ever, and build your throne for all generations.’”-"
                   "He shall cry to me, ‘You are my Father, my God, and the Rock of my salvation.’ My steadfast love I will keep for him for ever, and my covenant will stand firm for him.",
             ),
             const ReadingModel(
               title: "Romans 4:13, 16-18, 22",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: The promise to Abraham and his descendants, that they should inherit the world, did not come through the law but through the righteousness of "
+              text:
+                  "Brethren: The promise to Abraham and his descendants, that they should inherit the world, did not come through the law but through the righteousness of "
                   "faith. That is why it depends on faith, in order that the promise may rest on grace and be guaranteed to all his descendants—not only to the adherents of "
                   "the law but also to those who share the faith of Abraham, for he is the father of us all, as it is written, “I have made you the father of many nations”—in "
                   "the presence of the God in whom he believed, who gives life to the dead and calls into existence the things that do not exist. In hope he believed against "
@@ -371,12 +408,14 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
               title: "Ps 84:4",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "Blessed are they who dwell in your house, O Lord, for ever singing your praise!",
+              text:
+                  "Blessed are they who dwell in your house, O Lord, for ever singing your praise!",
             ),
             const ReadingModel(
               title: "Matthew 1:16, 18-21, 24a",
               readingType: ReadingTypeEnum.gospel,
-              text: "Jacob was the father of Joseph the husband of Mary, of whom Jesus was born, who is called Christ. Now the birth of Jesus Christ took place in this way. "
+              text:
+                  "Jacob was the father of Joseph the husband of Mary, of whom Jesus was born, who is called Christ. Now the birth of Jesus Christ took place in this way. "
                   "When his mother Mary had been betrothed to Joseph, before they came together she was found to be with child of the Holy Spirit; and her husband Joseph, "
                   "being a just man and unwilling to put her to shame, resolved to send her away quietly. But as he considered this, behold, an angel of the Lord appeared to "
                   "him in a dream, saying, “Joseph, son of David, do not fear to take Mary your wife, for that which is conceived in her is of the Holy Spirit; she will bear "
@@ -386,7 +425,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "Luke 2:41-51a",
               readingType: ReadingTypeEnum.gospel,
-              text: "The parents of Jesus went to Jerusalem every year at the feast of the Passover. And when he was twelve years old, they went up according to custom; and "
+              text:
+                  "The parents of Jesus went to Jerusalem every year at the feast of the Passover. And when he was twelve years old, they went up according to custom; and "
                   "when the feast was ended, as they were returning, the boy Jesus stayed behind in Jerusalem. His parents did not know it, but supposing him to be in the "
                   "company they went a day’s journey, and they sought him among their kinsfolk and acquaintances; and when they did not find him, they returned to Jerusalem, "
                   "seeking him. After three days they found him in the temple, sitting among the teachers, listening to them and asking them questions; and all who heard him "
@@ -405,7 +445,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "Isaiah 7:10-14; 8:10",
               readingType: ReadingTypeEnum.first,
-              text: "The LORD spoke to Ahaz, “Ask a sign of the LORD your God; let it be deep as Sheol or high as heaven.” But Ahaz said, “I will not ask, and I will not "
+              text:
+                  "The LORD spoke to Ahaz, “Ask a sign of the LORD your God; let it be deep as Sheol or high as heaven.” But Ahaz said, “I will not ask, and I will not "
                   "put the LORD to the test.” And he said, “Hear then, O house of David! Is it too little for you to weary men, that you weary my God also? Therefore the "
                   "Lord himself will give you a sign. Behold, a young woman shall conceive and bear a son, and shall call his name Imman′u-el. Take counsel together, but "
                   "it will come to nought; speak a word, but it will not stand, for God is with us.",
@@ -414,7 +455,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
               title: "Ps 40:7-8a, 8b-9, 10, 11",
               readingType: ReadingTypeEnum.responsorial,
               response: "See, I have come, Lord, to do your will.",
-              text: "Sacrifice and offering you do not desire; but you have given me an open ear. Burnt offering and sin offering you have not required. Then I said, “Behold, I come.”-"
+              text:
+                  "Sacrifice and offering you do not desire; but you have given me an open ear. Burnt offering and sin offering you have not required. Then I said, “Behold, I come.”-"
                   "“In the roll of the book it is written of me; I delight to do your will, O my God; your law is within my heart.”-"
                   "I have told the glad news of deliverance in the great congregation; see, I have not restrained my lips, as you know, O LORD.-"
                   "I have not hid your saving help within my heart, I have spoken of your faithfulness and your salvation; I have not concealed your steadfast love and your faithfulness from the great congregation.",
@@ -422,7 +464,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
             const ReadingModel(
               title: "Hebrews 10:4-10",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: It is impossible that the blood of bulls and goats should take away sins. Consequently,"
+              text:
+                  "Brethren: It is impossible that the blood of bulls and goats should take away sins. Consequently,"
                   "when Christ came into the world, he said, “Sacrifices and offerings you have not "
                   "desired, but a body have you prepared for me; in burnt offerings and sin offerings you have taken "
                   "no pleasure. Then I said, ‘Behold, I have come to do your will, O God,’ as it is written of me in the "
@@ -436,12 +479,14 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
               title: "John 1:14ab",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "The Word became flesh and dwelt among us, and we have beheld his glory.",
+              text:
+                  "The Word became flesh and dwelt among us, and we have beheld his glory.",
             ),
             const ReadingModel(
               title: "Luke 1:26-38",
               readingType: ReadingTypeEnum.gospel,
-              text: "In the sixth month the angel Gabriel was sent from God to a city of Galilee named Nazareth, to a "
+              text:
+                  "In the sixth month the angel Gabriel was sent from God to a city of Galilee named Nazareth, to a "
                   "virgin betrothed to a man whose name was Joseph, of the house of David; and the virgin’s name was "
                   "Mary. And he came to her and said, “Hail, full of grace, the Lord is with you!” But she was "
                   "greatly troubled at the saying, and considered in her mind what sort of greeting this might be. "
@@ -464,7 +509,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
         ),
       SolemnitiesAndMajorFeastEnum.ascension => MissalModel(
           season: SeasonEnum.easter,
-          readings: _krAscension(sundayYear, gospelAcclaimationType, gospelAcclaimationResponse),
+          readings: _krAscension(
+              sundayYear, gospelAcclaimationType, gospelAcclaimationResponse),
           color: ColorEnum.white,
           date: date,
           title: title,
@@ -476,7 +522,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Exodus 34:4b-6, 8-9",
                   readingType: ReadingTypeEnum.first,
-                  text: "Moses rose early in the morning and went up on Mount Sinai, as the LORD had commanded him, and took in his hand two tables of stone. And the LORD "
+                  text:
+                      "Moses rose early in the morning and went up on Mount Sinai, as the LORD had commanded him, and took in his hand two tables of stone. And the LORD "
                       "descended in the cloud and stood with him there, and proclaimed the name of the LORD. The LORD passed before him, and proclaimed, “The LORD, the LORD, "
                       "a God merciful and gracious, slow to anger, and abounding in steadfast love and faithfulness. And Moses made haste to bow his head toward the earth, "
                       "and worshiped. And he said, “If now I have found favor in your sight, O Lord, let the Lord, I pray you, go in the midst of us, although it is a "
@@ -485,8 +532,10 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Daniel 3:52, 53, 54, 55",
                   readingType: ReadingTypeEnum.responsorial,
-                  response: "You are to be praised and highly exalted for ever.",
-                  text: "“Blessed are you, O Lord, God of our fathers, and to be praised and highly exalted for ever; And blessed is your glorious, holy name and to be highly praised and highly exalted for ever.”-"
+                  response:
+                      "You are to be praised and highly exalted for ever.",
+                  text:
+                      "“Blessed are you, O Lord, God of our fathers, and to be praised and highly exalted for ever; And blessed is your glorious, holy name and to be highly praised and highly exalted for ever.”-"
                       "“Blessed are you in the temple of your holy glory and to be extolled and highly glorified for ever.”-"
                       "“Blessed are you upon the throne of your kingdom and to be extolled and highly exalted for ever.”-"
                       "“Blessed are you, who sits upon cherubim and look upon the deeps, and to be praised and highly exalted for ever.”",
@@ -494,7 +543,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "2 Corinthians 13:11-13",
                   readingType: ReadingTypeEnum.second,
-                  text: "Brethren, rejoice. Mend your ways, heed my appeal, agree with one another, live in peace, and the God of love and peace will be with you. Greet "
+                  text:
+                      "Brethren, rejoice. Mend your ways, heed my appeal, agree with one another, live in peace, and the God of love and peace will be with you. Greet "
                       "one another with a holy kiss. All the saints greet you. The grace of the Lord Jesus Christ and the love of God and the fellowship of the Holy Spirit "
                       "be with you all.",
                 ),
@@ -502,12 +552,14 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                   title: "cf. Revelation 1:8",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "Glory to the Father, the Son and the Holy Spirit; to God, who is, who was and who is to come.",
+                  text:
+                      "Glory to the Father, the Son and the Holy Spirit; to God, who is, who was and who is to come.",
                 ),
                 const ReadingModel(
                   title: "John 3:16-18",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "“God so loved the world that he gave his only Son, that whoever believes in him should not "
+                  text:
+                      "“God so loved the world that he gave his only Son, that whoever believes in him should not "
                       "perish but have eternal life. For God sent the Son into the world, not to condemn the world, but that the world might "
                       "be saved through him. He who believes in him is not condemned; he who does not believe is condemned already, because he "
                       "has not believed in the name of the only Son of God.”",
@@ -523,7 +575,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Deuteronomy 4:32-34, 39-40",
                   readingType: ReadingTypeEnum.first,
-                  text: "Moses spoke to the people, saying: “Ask now of the days that are past, which were before you, since the day that God created man upon the earth, and ask from "
+                  text:
+                      "Moses spoke to the people, saying: “Ask now of the days that are past, which were before you, since the day that God created man upon the earth, and ask from "
                       "one end of heaven to the other, whether such a great thing as this has ever happened or was ever heard of. Did any people ever hear the voice of a god speaking "
                       "out of the midst of the fire, as you have heard, and still live? Or has any god ever attempted to go and take a nation for himself from the midst of another "
                       "nation, by trials, by signs, by wonders, and by war, by a mighty hand and an outstretched arm, and by great terrors, according to all that the LORD your God did "
@@ -535,8 +588,10 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Ps 33:4-5, 6+9, 18-19, 20+22",
                   readingType: ReadingTypeEnum.responsorial,
-                  response: "Blessed the people the Lord has chosen as his heritage.",
-                  text: "The word of the LORD is upright; and all his work is done in faithfulness. He loves righteousness and justice; the earth is full of the steadfast love of the LORD.-"
+                  response:
+                      "Blessed the people the Lord has chosen as his heritage.",
+                  text:
+                      "The word of the LORD is upright; and all his work is done in faithfulness. He loves righteousness and justice; the earth is full of the steadfast love of the LORD.-"
                       "By the word of the LORD the heavens were made, and all their host by the breath of his mouth. For he spoke, and it came to be; he commanded, and it stood forth.-"
                       "Behold, the eye of the LORD is on those who fear him, on those who hope in his steadfast love, that he may deliver their soul from death, and keep them alive in famine.-"
                       "Our soul waits for the LORD; he is our help and shield. Let your steadfast love, O LORD, be upon us, even as we hope in you.",
@@ -544,7 +599,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Romans 8:14-17",
                   readingType: ReadingTypeEnum.second,
-                  text: "Brethren: All who are led by the Spirit of God are sons of God. For you did not receive the spirit of slavery to fall back into fear, but you have "
+                  text:
+                      "Brethren: All who are led by the Spirit of God are sons of God. For you did not receive the spirit of slavery to fall back into fear, but you have "
                       "received the spirit of sonship. When we cry, “Abba! Father!” it is the Spirit himself bearing witness with our spirit that we are children of God, "
                       "and if children, then heirs, heirs of God and fellow heirs with Christ, provided we suffer with him in order that we may also be glorified with him.",
                 ),
@@ -552,12 +608,14 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                   title: "cf. Revelation 1:8",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "Glory to the Father, the Son and the Holy Spirit; to God, who is, who was and who is to come.",
+                  text:
+                      "Glory to the Father, the Son and the Holy Spirit; to God, who is, who was and who is to come.",
                 ),
                 const ReadingModel(
                   title: "Matthew 28:16-20",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "The eleven disciples went to Galilee, to the mountain to which Jesus had directed them. And when they saw him they worshiped him; but some doubted. And "
+                  text:
+                      "The eleven disciples went to Galilee, to the mountain to which Jesus had directed them. And when they saw him they worshiped him; but some doubted. And "
                       "Jesus came and said to them, “All authority in heaven and on earth has been given to me. Go therefore and make disciples of all nations, baptizing them in "
                       "the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you; and behold, I am with you always, to "
                       "the close of the age.”",
@@ -573,7 +631,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Proverbs 8:22-31",
                   readingType: ReadingTypeEnum.first,
-                  text: "Thus speaks the wisdom of God: “The LORD created me at the beginning of his work, the first of his acts of old. Ages ago I was set up, at the first, "
+                  text:
+                      "Thus speaks the wisdom of God: “The LORD created me at the beginning of his work, the first of his acts of old. Ages ago I was set up, at the first, "
                       "before the beginning of the earth. When there were no depths I was brought forth, when there were no springs abounding with water. Before the "
                       "mountains had been shaped, before the hills, I was brought forth; before he had made the earth with its fields, or the first of the dust of the world. "
                       "When he established the heavens, I was there, when he drew a circle on the face of the deep, when he made firm the skies above, when he established "
@@ -584,15 +643,18 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Ps 8:4-5, 6-7, 8-9",
                   readingType: ReadingTypeEnum.responsorial,
-                  response: "O Lord, our Lord, how majestic is your name through all the earth!",
-                  text: "When I look at your heavens, the work of your fingers, the moon and the stars which you have established; what is man that you are mindful of him, and the son of man that you care for him?-"
+                  response:
+                      "O Lord, our Lord, how majestic is your name through all the earth!",
+                  text:
+                      "When I look at your heavens, the work of your fingers, the moon and the stars which you have established; what is man that you are mindful of him, and the son of man that you care for him?-"
                       "Yet you have made him little less than God, and crowned him with glory and honor. You have given him dominion over the works of your hands; you have put all things under his feet.-"
                       "All sheep and oxen, and also the beasts of the field, the birds of the air, and the fish of the sea, whatever passes along the paths of the sea.",
                 ),
                 const ReadingModel(
                   title: "Romans 5:1-5",
                   readingType: ReadingTypeEnum.second,
-                  text: "brethren: Since we are justified by faith, we have peace with God through our Lord Jesus Christ. Through him we have obtained access to this grace "
+                  text:
+                      "brethren: Since we are justified by faith, we have peace with God through our Lord Jesus Christ. Through him we have obtained access to this grace "
                       "in which we stand, and we rejoice in our hope of sharing the glory of God. More than that, we rejoice in our sufferings, knowing that suffering "
                       "produces endurance, and endurance produces character, and character produces hope, and hope does not disappoint us, because God’s love has been poured "
                       "into our hearts through the Holy Spirit who has been given to us.",
@@ -601,12 +663,14 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                   title: "cf. Revelation 1:8",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "Glory to the Father, the Son and the Holy Spirit; to God, who is, who was and who is to come.",
+                  text:
+                      "Glory to the Father, the Son and the Holy Spirit; to God, who is, who was and who is to come.",
                 ),
                 const ReadingModel(
                   title: "John 16:12-15",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "Jesus said to his disciples: “I have yet many things to say to you, but you cannot bear them now. When the Spirit of truth comes, he will "
+                  text:
+                      "Jesus said to his disciples: “I have yet many things to say to you, but you cannot bear them now. When the Spirit of truth comes, he will "
                       "guide you into all the truth; for he will not speak on his own authority, but whatever he hears he will speak, and he will declare to you "
                       "the things that are to come. He will glorify me, for he will take what is mine and declare it to you. All that the Father has is mine; "
                       "therefore I said that he will take what is mine and declare it to you.”",
@@ -624,7 +688,8 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                 const ReadingModel(
                   title: "Deuteronomy 8:2-3, 14b-16a",
                   readingType: ReadingTypeEnum.first,
-                  text: "Moses spoke to the people saying: “You shall remember all the way which the LORD your God has led you these forty years in the wilderness, that he "
+                  text:
+                      "Moses spoke to the people saying: “You shall remember all the way which the LORD your God has led you these forty years in the wilderness, that he "
                       "might humble you, testing you to know what was in your heart, whether you would keep his commandments, or not. And he humbled you and let you hunger "
                       "and fed you with manna, which you did not know, nor did your fathers know; that he might make you know that man does not live by bread alone, but that "
                       "man lives by everything that proceeds out of the mouth of the LORD. And you shall remember the LORD your God, who brought you out of the land of "
@@ -635,14 +700,16 @@ extension SolemnitiesReadings on SolemnitiesAndMajorFeastEnum {
                   title: "Ps 147:12-13, 14-15, 19-20",
                   readingType: ReadingTypeEnum.responsorial,
                   response: "O Jerusalem, glorify the Lord! Or Alleluia",
-                  text: "Praise the LORD, O Jerusalem! Praise your God, O Zion! For he strengthens the bars of your gates; he blesses your sons within you.-"
+                  text:
+                      "Praise the LORD, O Jerusalem! Praise your God, O Zion! For he strengthens the bars of your gates; he blesses your sons within you.-"
                       "He makes peace in your borders; he fills you with the finest of the wheat. He sends forth his command to the earth; his word runs swiftly.-"
                       "He declares his word to Jacob, his statutes and ordinances to Israel. He has not dealt thus with any other nation; they do not know his ordinances. Praise the Lord!",
                 ),
                 const ReadingModel(
                   title: "1 Corinthians 10:16-17",
                   readingType: ReadingTypeEnum.second,
-                  text: "Brethren: The cup of blessing which we bless, is it not a participation in the blood of Christ? The bread which we break, is it not a participation "
+                  text:
+                      "Brethren: The cup of blessing which we bless, is it not a participation in the blood of Christ? The bread which we break, is it not a participation "
                       "in the body of Christ? Because there is one bread, we who are many are one body, for we all partake of the one bread.",
                 ),
                 const ReadingModel(
@@ -759,12 +826,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
                   title: "John 6:51",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "I am the living bread which came down from heaven, says the Lord; if any one eats of this bread, he will live for ever.",
+                  text:
+                      "I am the living bread which came down from heaven, says the Lord; if any one eats of this bread, he will live for ever.",
                 ),
                 const ReadingModel(
                   title: "John 6:51-58",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "Jesus said to the crowd of the Jews: “I am the living bread which came down from heaven; if any one eats of this bread, he will live for ever; and the bread which I shall "
+                  text:
+                      "Jesus said to the crowd of the Jews: “I am the living bread which came down from heaven; if any one eats of this bread, he will live for ever; and the bread which I shall "
                       "give for the life of the world is my flesh.” The Jews then disputed among themselves, saying, “How can this man give us his flesh to eat?” So Jesus said to them, "
                       "“Truly, truly, I say to you, unless you eat the flesh of the Son of man and drink his blood, you have no life in you; he who eats my flesh and drinks my blood has "
                       "eternal life, and I will raise him up at the last day. For my flesh is food indeed, and my blood is drink indeed. He who eats my flesh and drinks my blood abides "
@@ -782,7 +851,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Exodus 24:3-8",
                   readingType: ReadingTypeEnum.first,
-                  text: "Moses came and told the people all the words of the LORD and all the ordinances; and all the people answered with one voice, and said, “All the words "
+                  text:
+                      "Moses came and told the people all the words of the LORD and all the ordinances; and all the people answered with one voice, and said, “All the words "
                       "which the LORD has spoken we will do.” And Moses wrote all the words of the LORD. And he rose early in the morning, and built an altar at the foot of the "
                       "mountain, and twelve pillars, according to the twelve tribes of Israel. And he sent young men of the people of Israel, who offered burnt offerings and "
                       "sacrificed peace offerings of oxen to the LORD. And Moses took half of the blood and put it in basins, and half of the blood he threw against the altar. "
@@ -793,15 +863,18 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Ps 116:12-13, 15-16, 17-18",
                   readingType: ReadingTypeEnum.responsorial,
-                  response: "How can I repay the Lord for his goodness to me? Or Alleluia",
-                  text: "What shall I render to the LORD for all his bounty to me? I will lift up the cup of salvation and call on the name of the LORD.-"
+                  response:
+                      "How can I repay the Lord for his goodness to me? Or Alleluia",
+                  text:
+                      "What shall I render to the LORD for all his bounty to me? I will lift up the cup of salvation and call on the name of the LORD.-"
                       "Precious in the sight of the LORD is the death of his saints. O LORD, I am your servant; I am your servant, the son of your handmaid. You have loosed my bonds.-"
                       "I will offer to you the sacrifice of thanksgiving and call on the name of the LORD. I will pay my vows to the LORD in the presence of all his people.",
                 ),
                 const ReadingModel(
                   title: "Hebrews 9:11-15",
                   readingType: ReadingTypeEnum.second,
-                  text: "Brethren: When Christ appeared as a high priest of the good things that have come, then through the greater and more perfect tent (not made with "
+                  text:
+                      "Brethren: When Christ appeared as a high priest of the good things that have come, then through the greater and more perfect tent (not made with "
                       "hands, that is, not of this creation) he entered once for all into the Holy Place, taking not the blood of goats and calves but his own blood, thus "
                       "securing an eternal redemption. For if the sprinkling of defiled persons with the blood of goats and bulls and with the ashes of a heifer sanctifies for the purification of the flesh, how much more shall the blood of "
                       "Christ, who through the eternal Spirit offered himself without blemish to God, purify your conscience from dead works to serve the living God. Therefore he is the mediator of a new covenant, so that those who are called "
@@ -921,12 +994,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
                   title: "John 6:51",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "I am the living bread which came down from heaven, says the Lord; if any one eats of this bread, he will live for ever.",
+                  text:
+                      "I am the living bread which came down from heaven, says the Lord; if any one eats of this bread, he will live for ever.",
                 ),
                 const ReadingModel(
                   title: "Mark 14:12-16, 22-26",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "On the first day of Unleavened Bread, when they sacrificed the passover lamb, his disciples said to him, “Where will you have us go and prepare "
+                  text:
+                      "On the first day of Unleavened Bread, when they sacrificed the passover lamb, his disciples said to him, “Where will you have us go and prepare "
                       "for you to eat the passover?” And he sent two of his disciples, and said to them, “Go into the city, and a man carrying a jar of water will meet you; "
                       "follow him, and wherever he enters, say to the householder, ‘The Teacher says, Where is my guest room, where I am to eat the passover with my "
                       "disciples?’ And he will show you a large upper room furnished and ready; there prepare for us.” And the disciples set out and went to the city, and "
@@ -946,15 +1021,18 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Genesis 14:18-20",
                   readingType: ReadingTypeEnum.first,
-                  text: "Melchiz′edek king of Salem brought out bread and wine; he was priest of God Most High. And he blessed him and said, “Blessed be Abram by God Most "
+                  text:
+                      "Melchiz′edek king of Salem brought out bread and wine; he was priest of God Most High. And he blessed him and said, “Blessed be Abram by God Most "
                       "High, maker of heaven and earth; and blessed be God Most High, who has delivered your enemies into your hand!” And Abram gave him a tenth of "
                       "everything.",
                 ),
                 const ReadingModel(
                   title: "Ps 110:1, 2, 3, 4",
                   readingType: ReadingTypeEnum.responsorial,
-                  response: "You are a priest for ever; in the line of Melchiz′edek.",
-                  text: "The LORD says to my lord: “Sit at my right hand, till I make your enemies your footstool.”-"
+                  response:
+                      "You are a priest for ever; in the line of Melchiz′edek.",
+                  text:
+                      "The LORD says to my lord: “Sit at my right hand, till I make your enemies your footstool.”-"
                       "The LORD sends forth from Zion your mighty scepter. Rule in the midst of your foes!-"
                       "With you is princely rule on the day of your power. In holy splendour, from the womb before the dawn, I have begotten you.-"
                       "The LORD has sworn and will not change his mind, “You are a priest for ever after the order of Melchiz′edek.”",
@@ -962,7 +1040,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "1 Corinthians 11:23-26",
                   readingType: ReadingTypeEnum.second,
-                  text: "Brethren: I received from the Lord what I also delivered to you, that the Lord Jesus on the night when he was betrayed took bread, and when he had "
+                  text:
+                      "Brethren: I received from the Lord what I also delivered to you, that the Lord Jesus on the night when he was betrayed took bread, and when he had "
                       "given thanks, he broke it, and said, “This is my body which is for you. Do this in remembrance of me.” In the same way also the cup, after supper, "
                       "saying, “This cup is the new covenant in my blood. Do this, as often as you drink it, in remembrance of me.” For as often as you eat this bread and "
                       "drink the cup, you proclaim the Lord’s death until he comes.",
@@ -1081,12 +1160,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
                   title: "John 6:51",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "I am the living bread which came down from heaven, says the Lord; if any one eats of this bread, he will live for ever.",
+                  text:
+                      "I am the living bread which came down from heaven, says the Lord; if any one eats of this bread, he will live for ever.",
                 ),
                 const ReadingModel(
                   title: "Luke 9:11b-17",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "Jesus spoke to the crowds of the kingdom of God, and cured those who had need of healing. Now the day began to wear away; and the twelve came and "
+                  text:
+                      "Jesus spoke to the crowds of the kingdom of God, and cured those who had need of healing. Now the day began to wear away; and the twelve came and "
                       "said to him, “Send the crowd away, to go into the villages and country round about, to lodge and get provisions; for we are here in a lonely place.” "
                       "But he said to them, “You give them something to eat.” They said, “We have no more than five loaves and two fish—unless we are to go and buy food for "
                       "all these people.” For there were about five thousand men. And he said to his disciples, “Make them sit down in companies, about fifty each.” And they "
@@ -1106,7 +1187,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Deuteronomy 7:6-11",
                   readingType: ReadingTypeEnum.first,
-                  text: "Moses spoke to the people saying: “For you are a people holy to the LORD your God; the LORD your God has chosen you to be a people for his own "
+                  text:
+                      "Moses spoke to the people saying: “For you are a people holy to the LORD your God; the LORD your God has chosen you to be a people for his own "
                       "possession, out of all the peoples that are on the face of the earth. It was not because you were more in number than any other people that the LORD set "
                       "his love upon you and chose you, for you were the fewest of all peoples; but it is because the LORD loves you, and is keeping the oath which he "
                       "swore to your fathers, that the LORD has brought you out with a mighty hand, and redeemed you from the house of bondage, from the hand of Pharaoh "
@@ -1118,8 +1200,10 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Ps 103:1-2, 3-4, 6-7, 8+10",
                   readingType: ReadingTypeEnum.responsorial,
-                  response: "The mercy of the Lord is everlasting upon those who hold him in fear.",
-                  text: "Bless the LORD, O my soul; and all that is within me, bless his holy name! Bless the LORD, O my soul, and forget not all his benefits.-"
+                  response:
+                      "The mercy of the Lord is everlasting upon those who hold him in fear.",
+                  text:
+                      "Bless the LORD, O my soul; and all that is within me, bless his holy name! Bless the LORD, O my soul, and forget not all his benefits.-"
                       "It is the LORD who forgives all your iniquity, who heals all your diseases, who redeems your life from the Pit, who crowns you with steadfast love and mercy.-"
                       "The LORD works vindication and justice for all who are oppressed. He made known his ways to Moses, his acts to the people of Israel.-"
                       "The LORD is merciful and gracious, slow to anger and abounding in steadfast love. He does not deal with us according to our sins, nor requite us according to our iniquities.",
@@ -1127,7 +1211,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "1 John 4:7-16",
                   readingType: ReadingTypeEnum.second,
-                  text: "Beloved, let us love one another; for love is of God, and he who loves is born of God and knows God. He who does not "
+                  text:
+                      "Beloved, let us love one another; for love is of God, and he who loves is born of God and knows God. He who does not "
                       "love does not know God; for God is love. In this the love of God was made manifest among us, that God sent his only Son "
                       "into the world, so that we might live through him. In this is love, not that we loved God but that he loved us and sent "
                       "his Son to be the expiation for our sins. Beloved, if God so loved us, we also ought to love one another. No man has ever seen God; if we love one "
@@ -1140,12 +1225,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
                   title: "Matthew 11:29ab",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "Take my yoke upon you, and learn from me, says the Lord; for I am gentle and lowly in heart.",
+                  text:
+                      "Take my yoke upon you, and learn from me, says the Lord; for I am gentle and lowly in heart.",
                 ),
                 const ReadingModel(
                   title: "Matthew 11:25-30",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "Jesus declared, “I thank you, Father, Lord of heaven and earth, that you have hidden these things from the wise and understanding and revealed them to "
+                  text:
+                      "Jesus declared, “I thank you, Father, Lord of heaven and earth, that you have hidden these things from the wise and understanding and revealed them to "
                       "infants; yes, Father, for such was your gracious will. All things have been delivered to me by my Father; and no one knows the Son except the Father, and no "
                       "one knows the Father except the Son and any one to whom the Son chooses to reveal him. Come to me, all who labor and are heavy laden, and I will give you "
                       "rest. Take my yoke upon you, and learn from me; for I am gentle and lowly in heart, and you will find rest for your souls. For my yoke is easy, and my burden "
@@ -1162,7 +1249,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Hosea 11:1, 3-4, 8c-9",
                   readingType: ReadingTypeEnum.first,
-                  text: "Thus says the LORD: When Israel was a child, I loved him, and out of Egypt I called my son. Yet it was I who taught E′phraim to walk, I took "
+                  text:
+                      "Thus says the LORD: When Israel was a child, I loved him, and out of Egypt I called my son. Yet it was I who taught E′phraim to walk, I took "
                       "them up in my arms; but they did not know that I healed them. I led them with cords of compassion, with the bands of love, and I became to them as "
                       "one who eases the yoke on their jaws, and I bent down to them and fed them. My heart recoils within me, my compassion grows warm and tender. I "
                       "will not execute my fierce anger, I will not again destroy E′phraim; for I am God and not man, the Holy One in your midst, and I will not come to "
@@ -1171,15 +1259,18 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Isaiah 12:2-3, 4bcd, 5-6",
                   readingType: ReadingTypeEnum.responsorial,
-                  response: "With joy you will draw water from the wells of salvation.",
-                  text: "“Behold, God is my salvation; I will trust, and will not be afraid; for the LORD GOD is my strength and my song, and he has become my salvation.” With joy you will draw water from the wells of salvation.-"
+                  response:
+                      "With joy you will draw water from the wells of salvation.",
+                  text:
+                      "“Behold, God is my salvation; I will trust, and will not be afraid; for the LORD GOD is my strength and my song, and he has become my salvation.” With joy you will draw water from the wells of salvation.-"
                       "“Give thanks to the LORD, call upon his name; make known his deeds among the nations, proclaim that his name is exalted.“-"
                       "“Sing praises to the LORD, for he has done gloriously; let this be known in all the earth. Shout, and sing for joy, O inhabitant of Zion, for great in your midst is the Holy One of Israel.”",
                 ),
                 const ReadingModel(
                   title: "Ephesians 3:8-12, 14-19",
                   readingType: ReadingTypeEnum.second,
-                  text: "Brethren: To me, though I am the very least of all the saints, this grace was given, to preach to the Gentiles the unsearchable riches of "
+                  text:
+                      "Brethren: To me, though I am the very least of all the saints, this grace was given, to preach to the Gentiles the unsearchable riches of "
                       "Christ, and to make all men see what is the plan of the mystery hidden for ages in God who created all things; that through the church the "
                       "manifold wisdom of God might now be made known to the principalities and powers in the heavenly places. This was according to the eternal purpose "
                       "which he has realized in Christ Jesus our Lord, in whom we have boldness and confidence of access through our faith in him. For this reason I bow "
@@ -1192,18 +1283,21 @@ Fellow heirs and guests to be. Amen. Alleluia.
                   title: "1 John 4:10b",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "God loved us and sent his Son to be the expiation for our sins.",
+                  text:
+                      "God loved us and sent his Son to be the expiation for our sins.",
                 ),
                 ReadingModel(
                   title: "Matthew 11:29ab",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "Take my yoke upon you, and learn from me, says the Lord; for I am gentle and lowly in heart.",
+                  text:
+                      "Take my yoke upon you, and learn from me, says the Lord; for I am gentle and lowly in heart.",
                 ),
                 const ReadingModel(
                   title: "John 19:31-37",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "Since it was the day of Preparation, in order to prevent the bodies from remaining on the cross on the sabbath (for that sabbath was a high "
+                  text:
+                      "Since it was the day of Preparation, in order to prevent the bodies from remaining on the cross on the sabbath (for that sabbath was a high "
                       "day), the Jews asked Pilate that their legs might be broken, and that they might be taken away. So the soldiers came and broke the legs of the "
                       "first, and of the other who had been crucified with him; but when they came to Jesus and saw that he was already dead, they did not break his "
                       "legs. But one of the soldiers pierced his side with a spear, and at once there came out blood and water. He who saw it has borne witness—his "
@@ -1221,7 +1315,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Ezekiel 34:11-16",
                   readingType: ReadingTypeEnum.first,
-                  text: "“Thus says the Lord GOD: Behold, I, I myself will search for my sheep, and will seek them out. As a shepherd seeks out his flock when some of "
+                  text:
+                      "“Thus says the Lord GOD: Behold, I, I myself will search for my sheep, and will seek them out. As a shepherd seeks out his flock when some of "
                       "his sheep have been scattered abroad, so will I seek out my sheep; and I will rescue them from all places where they have been scattered on a day "
                       "of clouds and thick darkness. And I will bring them out from the peoples, and gather them from the countries, and will bring them into their own "
                       "land; and I will feed them on the mountains of Israel, by the fountains, and in all the inhabited places of the country. I will feed them with "
@@ -1233,8 +1328,10 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Ps 23:1-3a, 3b-4, 5, 6",
                   readingType: ReadingTypeEnum.responsorial,
-                  response: "The Lord is my shepherd; there is nothing I shall want.",
-                  text: "The LORD is my shepherd, I shall not want; he makes me lie down in green pastures. He leads me beside still waters; he restores my soul.-"
+                  response:
+                      "The Lord is my shepherd; there is nothing I shall want.",
+                  text:
+                      "The LORD is my shepherd, I shall not want; he makes me lie down in green pastures. He leads me beside still waters; he restores my soul.-"
                       "He leads me in paths of righteousness for his name’s sake. Even though I walk through the valley of the shadow of death, I fear no evil; for you are with me; your rod and your staff, they comfort me.-"
                       "You prepare a table before me in the presence of my enemies; you anoint my head with oil, my cup overflows.-"
                       "Surely goodness and mercy shall follow me all the days of my life; and I shall dwell in the house of the LORD for ever.",
@@ -1242,7 +1339,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
                 const ReadingModel(
                   title: "Romans 5:5b-11",
                   readingType: ReadingTypeEnum.second,
-                  text: "Brethren: God’s love has been poured into our hearts through the Holy Spirit who has been given to us. While we were yet helpless, at the right "
+                  text:
+                      "Brethren: God’s love has been poured into our hearts through the Holy Spirit who has been given to us. While we were yet helpless, at the right "
                       "time Christ died for the ungodly. Why, one will hardly die for a righteous man—though perhaps for a good man one will dare even to die. But God "
                       "shows his love for us in that while we were yet sinners Christ died for us. Since, therefore, we are now justified by his blood, much more shall we "
                       "be saved by him from the wrath of God. For if while we were enemies we were reconciled to God by the death of his Son, much more, now that we are "
@@ -1253,18 +1351,21 @@ Fellow heirs and guests to be. Amen. Alleluia.
                   title: "Matthew 11:29ab",
                   readingType: gospelAcclaimationType,
                   response: gospelAcclaimationResponse,
-                  text: "Take my yoke upon you, and learn from me, says the Lord; for I am gentle and lowly in heart.",
+                  text:
+                      "Take my yoke upon you, and learn from me, says the Lord; for I am gentle and lowly in heart.",
                 ),
                 ReadingModel(
                   title: "John 10:14",
                   readingType: ReadingTypeEnum.gospelAcclaimation,
                   response: gospelAcclaimationResponse,
-                  text: "I am the good shepherd, says the Lord; I know my own and my own know me.",
+                  text:
+                      "I am the good shepherd, says the Lord; I know my own and my own know me.",
                 ),
                 const ReadingModel(
                   title: "Luke 15:3-7",
                   readingType: ReadingTypeEnum.gospel,
-                  text: "Jesus told the Pharisees and the scribes this parable: “What man of you, having a hundred sheep, if he has lost one of them, does not leave the "
+                  text:
+                      "Jesus told the Pharisees and the scribes this parable: “What man of you, having a hundred sheep, if he has lost one of them, does not leave the "
                       "ninety-nine in the wilderness, and go after the one which is lost, until he finds it? And when he has found it, he lays it on his shoulders, "
                       "rejoicing. And when he comes home, he calls together his friends and his neighbors, saying to them, ‘Rejoice with me, for I have found my sheep "
                       "which was lost.’ Just so, I tell you, there will be more joy in heaven over one sinner who repents than over ninety-nine righteous persons who "
@@ -1282,7 +1383,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Isaiah 49:1-6",
               readingType: ReadingTypeEnum.first,
-              text: "Listen to me, O islands, and pay attention, you peoples from afar. The Lord called me from the womb, from the body of my mother he named my name. "
+              text:
+                  "Listen to me, O islands, and pay attention, you peoples from afar. The Lord called me from the womb, from the body of my mother he named my name. "
                   "He made my mouth like a sharp sword, in the shadow of his hand he hid me; he made me a polished arrow, in his quiver he hid me away. And he said to "
                   "me, “You are my servant, Israel, in whom I will be glorified.” But I said, “I have labored in vain, I have spent my strength for nothing and "
                   "vanity; yet surely my right is with the Lord, and my recompense with my God.” And now the Lord says, who formed me from the womb to be his servant, "
@@ -1294,14 +1396,16 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Ps 139:1-3, 13-14, 14-15",
               readingType: ReadingTypeEnum.responsorial,
               response: "I thank you who wonderfully made me.",
-              text: "O LORD, you have searched me and known me! You know when I sit down and when I rise up; you discern my thoughts from afar. You search out my path and my lying down, and are acquainted with all my ways.-"
+              text:
+                  "O LORD, you have searched me and known me! You know when I sit down and when I rise up; you discern my thoughts from afar. You search out my path and my lying down, and are acquainted with all my ways.-"
                   "For you formed my inward parts, you knit me together in my mother’s womb. I praise you, for you are fearful and wonderful. Wonderful are your works!-"
                   "I praise you, for you are fearful and wonderful. Wonderful are your works! You know me right well; my frame was not hidden from you, when I was being made in secret, intricately wrought in the depths of the earth.",
             ),
             const ReadingModel(
               title: "Acts 13:22-26",
               readingType: ReadingTypeEnum.second,
-              text: "In those days, Paul said: “God raised up David to be their king; of whom he testified and said, ‘I have found in David the son of Jesse a man after "
+              text:
+                  "In those days, Paul said: “God raised up David to be their king; of whom he testified and said, ‘I have found in David the son of Jesse a man after "
                   "my heart, who will do all my will.’ Of this man’s posterity God has brought to Israel a Savior, Jesus, as he promised. Before his coming John had "
                   "preached a baptism of repentance to all the people of Israel. And as John was finishing his course, he said, ‘What do you suppose that I am? I am not "
                   "he. No, but after me one is coming, the sandals of whose feet I am not worthy to untie.’ “Brethren, sons of the family of Abraham, and those among you "
@@ -1311,12 +1415,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "cf. Luke 1:76",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "You, child, will be called the prophet of the Most High; for you will go before the Lord to prepare his ways.",
+              text:
+                  "You, child, will be called the prophet of the Most High; for you will go before the Lord to prepare his ways.",
             ),
             const ReadingModel(
               title: "Luke 1:57-66, 80",
               readingType: ReadingTypeEnum.gospel,
-              text: "The time came for Elizabeth to be delivered, and she gave birth to a son. And her neighbors and "
+              text:
+                  "The time came for Elizabeth to be delivered, and she gave birth to a son. And her neighbors and "
                   "kinsfolk heard that the Lord had shown great mercy to her, and they rejoiced with her. And on the "
                   "eighth day they came to circumcise the child; and they would have named him Zechari′ah after his "
                   "father, but his mother said, “Not so; he shall be called John.” And they said to her, “None of "
@@ -1339,7 +1445,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Acts 12:1-11",
               readingType: ReadingTypeEnum.first,
-              text: "Herod the king laid violent hands upon some who belonged to the church. He killed James the brother of John with the sword; and when he saw that it "
+              text:
+                  "Herod the king laid violent hands upon some who belonged to the church. He killed James the brother of John with the sword; and when he saw that it "
                   "pleased the Jews, he proceeded to arrest Peter also. This was during the days of Unleavened Bread. And when he had seized him, he put him in prison, and "
                   "delivered him to four squads of soldiers to guard him, intending after the Passover to bring him out to the people. So Peter was kept in prison; but "
                   "earnest prayer for him was made to God by the church. The very night when Herod was about to bring him out, Peter was sleeping between two soldiers, "
@@ -1355,7 +1462,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Ps 34:2-3, 4-5, 6-7, 8-9",
               readingType: ReadingTypeEnum.responsorial,
               response: "From all my terrors, the Lord set me free.",
-              text: "I will bless the LORD at all times; his praise shall continually be in my mouth. My soul makes its boast in the LORD; let the afflicted hear and be glad.-"
+              text:
+                  "I will bless the LORD at all times; his praise shall continually be in my mouth. My soul makes its boast in the LORD; let the afflicted hear and be glad.-"
                   "O magnify the LORD with me, and let us exalt his name together! I sought the LORD, and he answered me, and delivered me from all my fears.-"
                   "Look to him, and be radiant; so your faces shall never be ashamed. This poor man cried, and the LORD heard him, and saved him out of all his troubles.-"
                   "The angel of the LORD encamps around those who fear him, and delivers them. O taste and see that the LORD is good! Happy is the man who takes refuge in him!",
@@ -1363,7 +1471,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "2 Timothy 4:6-8, 17-18",
               readingType: ReadingTypeEnum.second,
-              text: "Beloved: I am already on the point of being sacrificed; the time of my departure has come. I have fought the good fight, I have finished the race, I have "
+              text:
+                  "Beloved: I am already on the point of being sacrificed; the time of my departure has come. I have fought the good fight, I have finished the race, I have "
                   "kept the faith. Henceforth there is laid up for me the crown of righteousness, which the Lord, the righteous judge, will award to me on that Day, and not only "
                   "to me but also to all who have loved his appearing. But the Lord stood by me and gave me strength to proclaim the word fully, that all the Gentiles "
                   "might hear it. So I was rescued from the lion’s mouth. The Lord will  rescue me from every evil and save me for his heavenly kingdom. To him be the "
@@ -1373,12 +1482,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Matthew 16:18",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "You are Peter, and on this rock I will build my church. And the gates of Hades shall not prevail against it.",
+              text:
+                  "You are Peter, and on this rock I will build my church. And the gates of Hades shall not prevail against it.",
             ),
             const ReadingModel(
               title: "Matthew 16:13-19",
               readingType: ReadingTypeEnum.gospel,
-              text: "When Jesus came into the district of Caesare′a Philippi, he asked his disciples, “Who do men say that the Son of man is?” And they said, “Some say John "
+              text:
+                  "When Jesus came into the district of Caesare′a Philippi, he asked his disciples, “Who do men say that the Son of man is?” And they said, “Some say John "
                   "the Baptist, others say Eli′jah, and others Jeremiah or one of the prophets.” He said to them, “But who do you say that I am?” Simon Peter replied, “You "
                   "are the Christ, the Son of the living God.” And Jesus answered him, “Blessed are you, Simon Bar-Jona! For flesh and blood has not revealed this to you, but "
                   "my Father who is in heaven. And I tell you, you are Peter, and on this rock I will build my church, and the gates of Hades shall not prevail against it. "
@@ -1396,7 +1507,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Daniel 7:9-10, 13-14",
               readingType: ReadingTypeEnum.first,
-              text: "As I looked, thrones were placed and one that was ancient of days took his seat; his clothing was white as snow, and the hair of his head like pure wool; "
+              text:
+                  "As I looked, thrones were placed and one that was ancient of days took his seat; his clothing was white as snow, and the hair of his head like pure wool; "
                   "his throne was fiery flames, its wheels were burning fire. A stream of fire issued and came forth from before him; a thousand thousands served him, and ten "
                   "thousand times ten thousand stood before him; the court sat in judgment, and the books were opened. I saw in the night visions, and behold, with the clouds "
                   "of heaven there came one like a son of man, and he came to the Ancient of Days and was presented before "
@@ -1407,14 +1519,16 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Ps 97:1-2, 5-6, 9",
               readingType: ReadingTypeEnum.responsorial,
               response: "The Lord is king, most high above all the earth",
-              text: "The LORD reigns; let the earth rejoice; let the many islands be glad! Clouds and thick darkness are round about him; righteousness and justice are the foundation of his throne.-"
+              text:
+                  "The LORD reigns; let the earth rejoice; let the many islands be glad! Clouds and thick darkness are round about him; righteousness and justice are the foundation of his throne.-"
                   "The mountains melt like wax before the LORD, before the LORD of all the earth. The heavens proclaim his righteousness; and all the peoples behold his glory.-"
                   "For you, O LORD, are most high over all the earth; you are exalted far above all gods.",
             ),
             const ReadingModel(
               title: "2 Peter 1:16-19",
               readingType: ReadingTypeEnum.second,
-              text: "Beloved: We did not follow cleverly devised myths when we made known to you the power and coming of our Lord Jesus Christ, but we were eyewitnesses "
+              text:
+                  "Beloved: We did not follow cleverly devised myths when we made known to you the power and coming of our Lord Jesus Christ, but we were eyewitnesses "
                   "of his majesty. For when he received honor and glory from God the Father and the voice was borne to him by the Majestic Glory, “This is my beloved Son, "
                   "with whom I am well pleased,” we heard this voice borne from heaven, for we were with him on the holy mountain. And we have the prophetic word made "
                   "more sure. You will do well to pay attention to this as to a lamp shining in a dark place, until the day dawns and the morning star rises in your hearts.",
@@ -1423,7 +1537,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Matthew 17:5c",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "This is my beloved Son, with whom I am well pleased; listen to him.",
+              text:
+                  "This is my beloved Son, with whom I am well pleased; listen to him.",
             ),
             _krTransfigurationGospel(sundayYear),
           ],
@@ -1437,7 +1552,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Revelation 11:19a; 12:1-6a; 10ab",
               readingType: ReadingTypeEnum.first,
-              text: "God’s temple in heaven was opened, and the ark of his covenant was seen within his temple. And a great sign appeared in heaven, a woman clothed with "
+              text:
+                  "God’s temple in heaven was opened, and the ark of his covenant was seen within his temple. And a great sign appeared in heaven, a woman clothed with "
                   "the sun, with the moon under her feet, and on her head a crown of twelve stars; she was with child and she cried out in her pangs of birth, in anguish for "
                   "delivery. And another sign appeared in heaven; behold, a great red dragon, with seven heads and ten horns, and seven diadems upon his heads. His tail swept "
                   "down a third of the stars of heaven, and cast them to the earth. And the dragon stood before the woman who was about to bear a child, that he might devour "
@@ -1449,7 +1565,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Ps 45:10, 11, 12, 16",
               readingType: ReadingTypeEnum.responsorial,
               response: "On your right stands the queen in gold of Ophir.",
-              text: "Daughters of kings are among your ladies of honor; at your right hand stands the queen in gold of Ophir.-"
+              text:
+                  "Daughters of kings are among your ladies of honor; at your right hand stands the queen in gold of Ophir.-"
                   "Hear, O daughter, consider, and incline your ear; forget your people and your father’s house.-"
                   "The king will desire your beauty. Since he is your lord, bow to him.-"
                   "With joy and gladness they are led along as they enter the palace of the king.",
@@ -1457,7 +1574,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "1 Corinthians 15:20-27",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: Christ has been raised from the dead, the first fruits of those who have fallen asleep. For as by a man came death, by a man has come also the "
+              text:
+                  "Brethren: Christ has been raised from the dead, the first fruits of those who have fallen asleep. For as by a man came death, by a man has come also the "
                   "resurrection of the dead. For as in Adam all die, so also in Christ shall all be made alive. But each in his own order: Christ the first fruits, then at his "
                   "coming those who belong to Christ. Then comes the end, when he delivers the kingdom to God the Father after destroying every rule and every authority and "
                   "power. For he must reign until he has put all his enemies under his feet. The last enemy to be destroyed is death. “For God has put all things in "
@@ -1468,12 +1586,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "Mary has been taken up into heaven; the host of angels rejoices.",
+              text:
+                  "Mary has been taken up into heaven; the host of angels rejoices.",
             ),
             const ReadingModel(
               title: "Luke 1:39-56",
               readingType: ReadingTypeEnum.gospel,
-              text: "In those days Mary arose and went with haste into the hill country, to a city of Judah, and she "
+              text:
+                  "In those days Mary arose and went with haste into the hill country, to a city of Judah, and she "
                   "entered the house of Zechari′ah and greeted Elizabeth. And when Elizabeth heard the greeting of "
                   "Mary, the babe leaped in her womb; and Elizabeth was filled with the Holy Spirit and she "
                   "exclaimed with a loud cry, “Blessed are you among women, and blessed is the fruit of your womb! "
@@ -1508,14 +1628,16 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Ps 78:1-2, 34-35, 36-37, 38",
               readingType: ReadingTypeEnum.responsorial,
               response: "Never forget the deeds of the Lord!",
-              text: "Give ear, O my people, to my teaching; incline your ears to the words of my mouth! I will open my mouth in a parable; I will utter dark sayings from of old.-"
+              text:
+                  "Give ear, O my people, to my teaching; incline your ears to the words of my mouth! I will open my mouth in a parable; I will utter dark sayings from of old.-"
                   "When he slew them, they sought for him; they repented and sought God earnestly. They remembered that God was their rock, the Most High God their redeemer.-"
                   "But they flattered him with their mouths; they lied to him with their tongues. Their heart was not steadfast toward him; they were not true to his covenant.",
             ),
             const ReadingModel(
               title: "Philippians 2:6-11",
               readingType: ReadingTypeEnum.second,
-              text: "Christ Jesus, though he was in the form of God, did not count equality with God a thing to be grasped, but emptied himself, taking the form of a servant, "
+              text:
+                  "Christ Jesus, though he was in the form of God, did not count equality with God a thing to be grasped, but emptied himself, taking the form of a servant, "
                   "being born in the likeness of men. And being found in human form he humbled himself and became obedient unto death, even death on a cross. Therefore God "
                   "has highly exalted him and bestowed on him the name which is above every name, that at the name of Jesus every knee should bow, in heaven and on earth and "
                   "under the earth, and every tongue confess that Jesus Christ is Lord, to the glory of God the Father.",
@@ -1524,12 +1646,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "We adore you, O Christ, and we bless you, because by your Cross you have redeemed the world.",
+              text:
+                  "We adore you, O Christ, and we bless you, because by your Cross you have redeemed the world.",
             ),
             const ReadingModel(
               title: "John 3:13-17",
               readingType: ReadingTypeEnum.gospel,
-              text: "Jesus said to Nicodemus: “No one has ascended into heaven but he who descended from heaven, the Son of man. And as Moses lifted up the serpent in the "
+              text:
+                  "Jesus said to Nicodemus: “No one has ascended into heaven but he who descended from heaven, the Son of man. And as Moses lifted up the serpent in the "
                   "wilderness, so must the Son of man be lifted up, that whoever believes in him may have eternal life.” For God so loved the world that he gave his only "
                   "Son, that whoever believes in him should not perish but have eternal life. For God sent the Son into the world, not to condemn the world, but that the "
                   "world might be saved through him.",
@@ -1546,7 +1670,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Isaiah 11:1-10",
               readingType: ReadingTypeEnum.first,
-              text: "There shall come forth a shoot from the stump of Jesse, and a branch shall grow out of his roots. "
+              text:
+                  "There shall come forth a shoot from the stump of Jesse, and a branch shall grow out of his roots. "
                   "And the Spirit of the LORD shall rest upon him, the spirit of wisdom and understanding, the spirit of "
                   "counsel and might, the spirit of knowledge and the fear of the LORD. And his delight shall be in the "
                   "fear of the LORD. He shall not judge by what his eyes see, or decide by what his ears hear; but with "
@@ -1564,8 +1689,10 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Ps 72:1-2, 7-8, 12-13, 17",
               readingType: ReadingTypeEnum.responsorial,
-              response: "In his days shall justice flourish, and great peace forever",
-              text: "Give the king your justice, O God, and your righteousness to the royal son! May he judge your people with righteousness, and your poor with justice!-"
+              response:
+                  "In his days shall justice flourish, and great peace forever",
+              text:
+                  "Give the king your justice, O God, and your righteousness to the royal son! May he judge your people with righteousness, and your poor with justice!-"
                   "In his days may righteousness flourish, and peace abound, till the moon be no more! May he have dominion from sea to sea, and from the River to the ends of the earth!-"
                   "For he delivers the needy when he calls, the poor and him who has no helper. He has pity on the weak and the needy, and saves the lives of the needy.-"
                   "May his name endure for ever, his fame continue as long as the sun! May men bless themselves by him, all nations call him blessed!",
@@ -1573,7 +1700,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Ephesians 2:13-22",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: Now in Christ Jesus you who once were far off have been brought near in the blood of Christ. For he is our peace, who has made us both one, "
+              text:
+                  "Brethren: Now in Christ Jesus you who once were far off have been brought near in the blood of Christ. For he is our peace, who has made us both one, "
                   "and has broken down the dividing wall of hostility, by abolishing in his flesh the law of commandments and ordinances, that he might create in himself "
                   "one new man in place of the two, so making peace, and might reconcile us both to God in one body through the cross, thereby bringing the hostility to "
                   "an end. And he came and preached peace to you who were far off and peace to those who were near; for through him we both have access in one Spirit to "
@@ -1585,12 +1713,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Luke 1:38",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "Behold, I am the handmaid of the Lord; let it be to me according to your word.",
+              text:
+                  "Behold, I am the handmaid of the Lord; let it be to me according to your word.",
             ),
             const ReadingModel(
               title: "Matthew 2:13-15, 19-23",
               readingType: ReadingTypeEnum.gospel,
-              text: "When the Wise Men had departed, behold, an angel of the Lord appeared to Joseph in a dream and said, “Rise, take the child and his mother, and flee "
+              text:
+                  "When the Wise Men had departed, behold, an angel of the Lord appeared to Joseph in a dream and said, “Rise, take the child and his mother, and flee "
                   "to Egypt, and remain there till I tell you; for Herod is about to search for the child, to destroy him.” And he rose and took the child and his mother "
                   "by night, and departed to Egypt, and remained there until the death of Herod. This was to fulfil what the Lord had spoken by the prophet, “Out of Egypt "
                   "have I called my son.” But when Herod died, behold, an angel of the Lord appeared in a dream to Joseph in Egypt, saying, “Rise, take the child and his "
@@ -1610,7 +1740,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Revelation 7:2-4, 9-14",
               readingType: ReadingTypeEnum.first,
-              text: "I, John, saw another angel ascend from the rising of the sun, with the seal of the living God, and he called with a loud voice to the four angels who "
+              text:
+                  "I, John, saw another angel ascend from the rising of the sun, with the seal of the living God, and he called with a loud voice to the four angels who "
                   "had been given power to harm earth and sea, saying, “Do not harm the earth or the sea or the trees, till we have sealed the servants of our God upon "
                   "their foreheads.” And I heard the number of the sealed, a hundred and forty-four thousand sealed, out of every tribe of the sons of Israel. After this "
                   "I looked, and behold, a great multitude which no man could number, from every nation, from all tribes and peoples and tongues, standing before the "
@@ -1625,14 +1756,16 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Ps 24:1-2, 3-4, 5-6",
               readingType: ReadingTypeEnum.responsorial,
               response: "These are the people who seek your face, O Lord.",
-              text: "The earth is the LORD’s and the fullness thereof, the world and those who dwell therein; for he has founded it upon the seas, and established it upon the rivers.-"
+              text:
+                  "The earth is the LORD’s and the fullness thereof, the world and those who dwell therein; for he has founded it upon the seas, and established it upon the rivers.-"
                   "Who shall ascend the hill of the LORD? And who shall stand in his holy place? He who has clean hands and a pure heart, who does not lift up his soul to what is false.-"
                   "He will receive blessing from the LORD, and vindication from the God of his salvation. Such is the generation of those who seek him, who seek the face of the God of Jacob.",
             ),
             const ReadingModel(
               title: "1 John 3:1-3",
               readingType: ReadingTypeEnum.second,
-              text: "Beloved: See what love the Father has given us, that we should be called children of God; and so we are. The reason why the world "
+              text:
+                  "Beloved: See what love the Father has given us, that we should be called children of God; and so we are. The reason why the world "
                   "does not know us is that it did not know him. Beloved, we are God’s children now; it does not yet appear what we shall be, but we "
                   "know that when he appears we shall be like him, for we shall see him as he is. And every one who thus hopes in him purifies himself as he is pure.",
             ),
@@ -1640,12 +1773,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Matthew 11:28",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "Come to me, all you who labor and are heavy laden, and I will give you rest, says the Lord.",
+              text:
+                  "Come to me, all you who labor and are heavy laden, and I will give you rest, says the Lord.",
             ),
             const ReadingModel(
               title: "Matthew 5:1-12a",
               readingType: ReadingTypeEnum.gospel,
-              text: "Seeing the crowds, Jesus went up on the mountain, and when he sat down his disciples came to him. And he opened his mouth and taught "
+              text:
+                  "Seeing the crowds, Jesus went up on the mountain, and when he sat down his disciples came to him. And he opened his mouth and taught "
                   "them, saying: “Blessed are the poor in spirit, for theirs is the kingdom of heaven. “Blessed are those who mourn, for they shall be "
                   "comforted. “Blessed are the meek, for they shall inherit the earth. “Blessed are those who hunger and thirst for righteousness, for they "
                   "shall be satisfied. “Blessed are the merciful, for they shall obtain mercy. “Blessed are the pure in heart, for they shall see God. "
@@ -1664,7 +1799,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Wisdom 3:1-9c",
               readingType: ReadingTypeEnum.first,
-              text: "The souls of the righteous are in the hand of God, and no torment will ever touch them. In the eyes of the foolish they seemed to have died, and their "
+              text:
+                  "The souls of the righteous are in the hand of God, and no torment will ever touch them. In the eyes of the foolish they seemed to have died, and their "
                   "departure was thought to be an affliction, and their going from us to be their destruction; but they are at peace. For though in the sight of men they "
                   "were punished, their hope is full of immortality. Having been disciplined a little, they will receive great good, because God tested them and found them "
                   "worthy of himself; like gold in the furnace he tried them, and like a sacrificial burnt offering he accepted them. In the time of their visitation they "
@@ -1674,7 +1810,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Wisdom 4:7-15",
               readingType: ReadingTypeEnum.first,
-              text: "The righteous man, though he die early, will be at rest. For old age is not honored for length of time, nor measured by number "
+              text:
+                  "The righteous man, though he die early, will be at rest. For old age is not honored for length of time, nor measured by number "
                   "of years; but understanding is gray hair for men, and a blameless life is ripe old age. There was one who pleased God and was "
                   "loved by him, and while living among sinners he was taken up. He was caught up lest evil change his understanding or guile "
                   "deceive his soul. For the fascination of wickedness obscures what is good, and roving desire perverts the innocent mind. Being "
@@ -1685,7 +1822,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Isaiah 25:6-9",
               readingType: ReadingTypeEnum.first,
-              text: "On this mountain the LORD of hosts will make for all peoples a feast of fat things, a feast "
+              text:
+                  "On this mountain the LORD of hosts will make for all peoples a feast of fat things, a feast "
                   "of wine on the lees, of fat things full of marrow, of wine on the lees well refined. And he will "
                   "destroy on this mountain the covering that is cast over all peoples, the veil that is spread over "
                   "all nations. He will swallow up death for ever, and the Lord GOD will wipe away tears from all "
@@ -1696,7 +1834,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Job 19:1, 23-27b",
               readingType: ReadingTypeEnum.first,
-              text: "Job answered: “Oh that my words were written! Oh that they were inscribed in a book! Oh that with an iron pen and lead they "
+              text:
+                  "Job answered: “Oh that my words were written! Oh that they were inscribed in a book! Oh that with an iron pen and lead they "
                   "were graven in the rock for ever! For I know that my Redeemer lives, and at last he will stand upon the earth; and after my skin "
                   "has been thus destroyed, then from my flesh I shall see God, whom I shall see on my side, and my eyes shall behold, and not "
                   "another.”",
@@ -1704,8 +1843,10 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Ps 23:1-3a, 3b-4, 5, 6",
               readingType: ReadingTypeEnum.responsorial,
-              response: "The Lord is my shepherd; there is nothing I shall want; Or Though I should walk in the valley of the shadow of death, no evil would I fear, for you are with me.",
-              text: "The LORD is my shepherd, I shall not want; he makes me lie down in green pastures. He leads me beside still waters; he restores my soul.-"
+              response:
+                  "The Lord is my shepherd; there is nothing I shall want; Or Though I should walk in the valley of the shadow of death, no evil would I fear, for you are with me.",
+              text:
+                  "The LORD is my shepherd, I shall not want; he makes me lie down in green pastures. He leads me beside still waters; he restores my soul.-"
                   "He leads me in paths of righteousness for his name’s sake. Even though I walk through the valley of the shadow of death, I fear no evil; for you are with me; your rod and your staff, they comfort me.-"
                   "You prepare a table before me in the presence of my enemies; you anoint my head with oil, my cup overflows.-"
                   "Surely goodness and mercy shall follow me all the days of my life; and I shall dwell in the house of the LORD for ever.",
@@ -1713,16 +1854,20 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Ps 25:6+7b, 17-18, 20-21",
               readingType: ReadingTypeEnum.responsorial,
-              response: "To you, O Lord, I lift up my soul; Or No one who waits for you, O Lord, will ever be put to shame..",
-              text: "Be mindful of your mercy, O LORD, and of your steadfast love, for they have been from of old. According to your steadfast love remember me, for your goodness’ sake, O LORD!-"
+              response:
+                  "To you, O Lord, I lift up my soul; Or No one who waits for you, O Lord, will ever be put to shame..",
+              text:
+                  "Be mindful of your mercy, O LORD, and of your steadfast love, for they have been from of old. According to your steadfast love remember me, for your goodness’ sake, O LORD!-"
                   "Relieve the troubles of my heart, and bring me out of my distresses. Consider my affliction and my trouble, and forgive all my sins.-"
                   "Oh guard my life, and deliver me; let me not be put to shame, for I take refuge in you. May integrity and uprightness preserve me, for I wait for you.",
             ),
             const ReadingModel(
               title: "Ps 27:1, 4, 7+8b+9a, 13-14",
               readingType: ReadingTypeEnum.responsorial,
-              response: "The Lord is my light and my salvation; Or I believe I shall see the Lord's goodness in the land of the living.",
-              text: "The LORD is my light and my salvation; whom shall I fear? The LORD is the stronghold of my life; of whom shall I be afraid?-"
+              response:
+                  "The Lord is my light and my salvation; Or I believe I shall see the Lord's goodness in the land of the living.",
+              text:
+                  "The LORD is my light and my salvation; whom shall I fear? The LORD is the stronghold of my life; of whom shall I be afraid?-"
                   "One thing have I asked of the LORD, that will I seek after; that I may dwell in the house of the LORD all the days of my life, to behold the beauty of the LORD, and to inquire in his temple.-"
                   "Hear, O LORD, when I cry aloud, be gracious to me and answer me! Your face, Lord, do I seek. Hide not your face from me.-"
                   "I believe that I shall see the goodness of the LORD in the land of the living! Wait for the LORD; be strong, and let your heart take courage; yes, wait for the LORD!",
@@ -1730,7 +1875,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Romans 5:5-11",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: Hope does not disappoint us, because God’s love has been poured into our hearts through the Holy Spirit who has been given to us. While we were yet helpless, at the right "
+              text:
+                  "Brethren: Hope does not disappoint us, because God’s love has been poured into our hearts through the Holy Spirit who has been given to us. While we were yet helpless, at the right "
                   "time Christ died for the ungodly. Why, one will hardly die for a righteous man—though perhaps for a good man one will dare even to die. But God "
                   "shows his love for us in that while we were yet sinners Christ died for us. Since, therefore, we are now justified by his blood, much more shall we "
                   "be saved by him from the wrath of God. For if while we were enemies we were reconciled to God by the death of his Son, much more, now that we are "
@@ -1740,7 +1886,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Romans 5:17-21",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: If, because of one man’s trespass, death reigned through that one man, much more will those who receive the abundance "
+              text:
+                  "Brethren: If, because of one man’s trespass, death reigned through that one man, much more will those who receive the abundance "
                   "of grace and the free gift of righteousness reign in life through the one man Jesus Christ. Then as one man’s trespass led to "
                   "condemnation for all men, so one man’s act of righteousness leads to acquittal and life for all men. For as by one man’s "
                   "disobedience many were made sinners, so by one man’s obedience many will be made righteous. Law came in, to increase the trespass; "
@@ -1750,7 +1897,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Romans 6:3-9",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: Do you not know that all of us who have been baptized into Christ Jesus were baptized into his death? We were buried therefore with him "
+              text:
+                  "Brethren: Do you not know that all of us who have been baptized into Christ Jesus were baptized into his death? We were buried therefore with him "
                   "by baptism into death, so that as Christ was raised from the dead by the glory of the Father, we too might walk in newness of life. For if we have "
                   "been united with him in a death like his, we shall certainly be united with him in a resurrection like his. We know that our old self was crucified "
                   "with him so that the sinful body might be destroyed, and we might no longer be enslaved to sin. For he who has died is freed from sin. But if we "
@@ -1760,7 +1908,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Romans 8:14-23",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: All who are led by the Spirit of God are sons of God. For you did not receive the spirit of slavery to fall back into "
+              text:
+                  "Brethren: All who are led by the Spirit of God are sons of God. For you did not receive the spirit of slavery to fall back into "
                   "fear, but you have received the spirit of sonship. When we cry, “Abba! Father!” it is the Spirit himself bearing witness with our "
                   "spirit that we are children of God, and if children, then heirs, heirs of God and fellow heirs with Christ, provided we suffer "
                   "with him in order that we may also be glorified with him. I consider that the sufferings of this present time are not worth "
@@ -1773,7 +1922,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Romans 8:31b-35, 37-39",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: If God is for us, who is against us? He who did not spare his own Son but gave him up for us all, will he not also give us all things with "
+              text:
+                  "Brethren: If God is for us, who is against us? He who did not spare his own Son but gave him up for us all, will he not also give us all things with "
                   "him? Who shall bring any charge against God’s elect? It is God who justifies; who is to condemn? Is it Christ Jesus, who died, yes, who was raised from "
                   "the dead, who is at the right hand of God, who indeed intercedes for us? Who shall separate us from the love of Christ? Shall tribulation, or distress, "
                   "or persecution, or famine, or nakedness, or peril, or sword? No, in all these things we are more than conquerors through him who loved us. For I am sure that neither death, nor life, nor "
@@ -1783,7 +1933,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Romans 14:7-12",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: None of us lives to himself, and none of us dies to himself. If we live, we live to the Lord, and if we die, we die to the Lord; so then, whether we "
+              text:
+                  "Brethren: None of us lives to himself, and none of us dies to himself. If we live, we live to the Lord, and if we die, we die to the Lord; so then, whether we "
                   "live or whether we die, we are the Lord’s. For to this end Christ died and lived again, that he might be Lord both of the dead and of the living. Why do you pass "
                   "judgment on your brother? Or you, why do you despise your brother? For we shall all stand before the judgment seat of God; for it "
                   "is written, “As I live, says the Lord, every knee shall bow to me, and every tongue shall give praise to God.” So each of us shall "
@@ -1792,7 +1943,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "1 Corinthians 15:20-28",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: Christ has been raised from the dead, the first fruits of those who have fallen asleep. For as by a man came death, by a man has come also the "
+              text:
+                  "Brethren: Christ has been raised from the dead, the first fruits of those who have fallen asleep. For as by a man came death, by a man has come also the "
                   "resurrection of the dead. For as in Adam all die, so also in Christ shall all be made alive. But each in his own order: Christ the first fruits, then at his "
                   "coming those who belong to Christ. Then comes the end, when he delivers the kingdom to God the Father after destroying every rule and every authority and "
                   "power. For he must reign until he has put all his enemies under his feet. The last enemy to be destroyed is death. “For God has put all things in "
@@ -1803,7 +1955,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "1 Corinthians 15:51-57",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: Behold! I tell you a mystery. We shall not all sleep, but we shall all be changed, in a moment, in the twinkling of an "
+              text:
+                  "Brethren: Behold! I tell you a mystery. We shall not all sleep, but we shall all be changed, in a moment, in the twinkling of an "
                   "eye, at the last trumpet. For the trumpet will sound, and the dead will be raised imperishable, and we shall be changed. For this "
                   "perishable nature must put on the imperishable, and this mortal nature must put on immortality. When the perishable puts on the "
                   "imperishable, and the mortal puts on immortality, then shall come to pass the saying that is written: “Death is swallowed up in "
@@ -1813,7 +1966,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "2 Corinthians 4:14-5:1",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: Knowing that he who raised the Lord Jesus will raise us also with Jesus and bring us with you into his presence. For it is all for your "
+              text:
+                  "Brethren: Knowing that he who raised the Lord Jesus will raise us also with Jesus and bring us with you into his presence. For it is all for your "
                   "sake, so that as grace extends to more and more people it may increase thanksgiving, to the glory of God. So we do not lose heart. "
                   "Though our outer nature is wasting away, our inner nature is being renewed every day. For this slight momentary affliction is preparing "
                   "for us an eternal weight of glory beyond all comparison, because we look not to the things that are seen but to the things that are "
@@ -1823,7 +1977,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "2 Corinthians 5:1, 6-10",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: We know that if the earthly tent we live in is destroyed, we have a building from God, a house not made with hands, "
+              text:
+                  "Brethren: We know that if the earthly tent we live in is destroyed, we have a building from God, a house not made with hands, "
                   "eternal in the heavens. So we are always of good courage; we know that while we are at home in the body we are away from the "
                   "Lord, for we walk by faith, not by sight. We are of good courage, and we would rather be away from the body and at home with the "
                   "Lord. So whether we are at home or away, we make it our aim to please him. For we must all appear before the judgment seat of "
@@ -1832,13 +1987,15 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Philippians 3:20-21",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: Our commonwealth is in heaven, and from it we await a Savior, the Lord Jesus Christ, who will change our lowly body to "
+              text:
+                  "Brethren: Our commonwealth is in heaven, and from it we await a Savior, the Lord Jesus Christ, who will change our lowly body to "
                   "be like his glorious body, by the power which enables him even to subject all things to himself.",
             ),
             const ReadingModel(
               title: "1 Thessalonians 4:13-18",
               readingType: ReadingTypeEnum.second,
-              text: "We would not have you ignorant, brethren, concerning those who are asleep, that you may not grieve as others do who have no hope. For "
+              text:
+                  "We would not have you ignorant, brethren, concerning those who are asleep, that you may not grieve as others do who have no hope. For "
                   "since we believe that Jesus died and rose again, even so, through Jesus, God will bring with him those who have fallen asleep. For this "
                   "we declare to you by the word of the Lord, that we who are alive, who are left until the coming of the Lord, shall not precede those "
                   "who have fallen asleep. For the Lord himself will descend from heaven with a cry of command, with the archangel’s call, and with the "
@@ -1849,7 +2006,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "2 Timothy 2:8-13",
               readingType: ReadingTypeEnum.second,
-              text: "Beloved: Remember Jesus Christ, risen from the dead, descended from David, as preached in my gospel, the gospel for which I am suffering and wearing chains "
+              text:
+                  "Beloved: Remember Jesus Christ, risen from the dead, descended from David, as preached in my gospel, the gospel for which I am suffering and wearing chains "
                   "like a criminal. But the word of God is not chained. Therefore I endure everything for the sake of the elect, that they also may obtain the salvation which in "
                   "Christ Jesus goes with eternal glory. The saying is sure: If we have died with him, we shall also live with him; if we endure, we shall also reign with him; if we "
                   "deny him, he also will deny us; if we are faithless, he remains faithful— for he cannot deny himself.",
@@ -1858,24 +2016,28 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Matthew 11:25",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "Come to me, all you who labor and are heavy laden, and I will give you rest, says the Lord.",
+              text:
+                  "Come to me, all you who labor and are heavy laden, and I will give you rest, says the Lord.",
             ),
             ReadingModel(
               title: "Matthew 25:34",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "Come, O blessed of my Father, says the Lord, inherit the kingdom prepared for you from the foundation of the world.",
+              text:
+                  "Come, O blessed of my Father, says the Lord, inherit the kingdom prepared for you from the foundation of the world.",
             ),
             ReadingModel(
               title: "John 3:16",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "God so loved the world that he gave his only begotten Son, that whoever believes in him should have eternal life.",
+              text:
+                  "God so loved the world that he gave his only begotten Son, that whoever believes in him should have eternal life.",
             ),
             const ReadingModel(
               title: "John 6:37-40",
               readingType: ReadingTypeEnum.gospel,
-              text: "Jesus said to the crowds, “All that the Father gives me will come to me; and him who "
+              text:
+                  "Jesus said to the crowds, “All that the Father gives me will come to me; and him who "
                   "comes to me I will not cast out. For I have come down from heaven, not to do my own will, but the will of him who sent me; and this "
                   "is the will of him who sent me, that I should lose nothing of all that he has given me, but raise it up at the last day. For this "
                   "is the will of my Father, that every one who sees the Son and believes in him should have eternal life; and I will raise him up at "
@@ -1884,7 +2046,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Matthew 5:1-12a",
               readingType: ReadingTypeEnum.gospel,
-              text: "Seeing the crowds, Jesus went up on the mountain, and when he sat down his disciples came to him. And he opened his mouth and taught "
+              text:
+                  "Seeing the crowds, Jesus went up on the mountain, and when he sat down his disciples came to him. And he opened his mouth and taught "
                   "them, saying: “Blessed are the poor in spirit, for theirs is the kingdom of heaven. “Blessed are those who mourn, for they shall be "
                   "comforted. “Blessed are the meek, for they shall inherit the earth. “Blessed are those who hunger and thirst for righteousness, for they "
                   "shall be satisfied. “Blessed are the merciful, for they shall obtain mercy. “Blessed are the pure in heart, for they shall see God. "
@@ -1895,7 +2058,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Matthew 11:25-30",
               readingType: ReadingTypeEnum.gospel,
-              text: "Jesus declared, “I thank you, Father, Lord of heaven and earth, that you have hidden these things from the wise and understanding and revealed them to "
+              text:
+                  "Jesus declared, “I thank you, Father, Lord of heaven and earth, that you have hidden these things from the wise and understanding and revealed them to "
                   "infants; yes, Father, for such was your gracious will. All things have been delivered to me by my Father; and no one knows the Son except the Father, and no "
                   "one knows the Father except the Son and any one to whom the Son chooses to reveal him. Come to me, all who labor and are heavy laden, and I will give you "
                   "rest. Take my yoke upon you, and learn from me; for I am gentle and lowly in heart, and you will find rest for your souls. For my yoke is easy, and my burden "
@@ -1904,7 +2068,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Matthew 25:31-46",
               readingType: ReadingTypeEnum.gospel,
-              text: "Jesus said to his disciples: “When the Son of man comes in his glory, and all the angels with him, then he will sit on his glorious throne. Before him "
+              text:
+                  "Jesus said to his disciples: “When the Son of man comes in his glory, and all the angels with him, then he will sit on his glorious throne. Before him "
                   "will be gathered all the nations, and he will separate them one from another as a shepherd separates the sheep from the goats, and he will place the "
                   "sheep at his right hand, but the goats at the left. Then the King will say to those at his right hand, ‘Come, O blessed of my Father, inherit the kingdom "
                   "prepared for you from the foundation of the world; for I was hungry and you gave me food, I was thirsty and you gave me drink, I was a stranger and you "
@@ -1920,7 +2085,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Luke 7:11-17",
               readingType: ReadingTypeEnum.gospel,
-              text: "Jesus went to a city called Na′in, and his disciples and a great crowd went with him. As he drew near to the gate of the city, behold, a man who had died "
+              text:
+                  "Jesus went to a city called Na′in, and his disciples and a great crowd went with him. As he drew near to the gate of the city, behold, a man who had died "
                   "was being carried out, the only son of his mother, and she was a widow; and a large crowd from the city was with her. And when the Lord saw her, he had "
                   "compassion on her and said to her, “Do not weep.” And he came and touched the bier, and the bearers stood still. And he said, “Young man, I say to you, "
                   "arise.” And the dead man sat up, and began to speak. And he gave him to his mother. Fear seized them all; and they glorified God, saying, “A great prophet has "
@@ -1929,7 +2095,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Luke 23:44-46, 50, 52-53; 24:1-5",
               readingType: ReadingTypeEnum.gospel,
-              text: "It was now about the sixth hour, and there was darkness over the whole land until the ninth hour, while the sun’s light failed; "
+              text:
+                  "It was now about the sixth hour, and there was darkness over the whole land until the ninth hour, while the sun’s light failed; "
                   "and the curtain of the temple was torn in two. Then Jesus, crying with a loud voice, said, “Father, into your hands I commit my "
                   "spirit!” And having said this he breathed his last. Now there was a man named Joseph from the Jewish town of Arimathe′a. He was "
                   "a member of the council, a good and righteous man. This man went to Pilate and asked for the body of Jesus. Then he took it down "
@@ -1942,7 +2109,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Luke 24:13-16, 28-35",
               readingType: ReadingTypeEnum.gospel,
-              text: "That very day, the first day of the week, two of the disciples of Jesus were going to a village named Emma′us, about seven miles from "
+              text:
+                  "That very day, the first day of the week, two of the disciples of Jesus were going to a village named Emma′us, about seven miles from "
                   "Jerusalem, and talking with each other about all these things that had happened. While they were talking and discussing together, "
                   "Jesus himself drew near and went with them. But their eyes were kept from recognizing him. So they drew near to the village to which "
                   "they were going. He appeared to be going further, but they constrained him, saying, “Stay with us, for it is toward evening and the "
@@ -1956,7 +2124,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "John 5:24-29",
               readingType: ReadingTypeEnum.gospel,
-              text: "Jesus answered the Jews: “Truly, truly, I say to you, he who hears my word and believes him who sent me, has eternal life; he "
+              text:
+                  "Jesus answered the Jews: “Truly, truly, I say to you, he who hears my word and believes him who sent me, has eternal life; he "
                   "does not come into judgment, but has passed from death to life. “Truly, truly, I say to you, the hour is coming, and now is, when "
                   "the dead will hear the voice of the Son of God, and those who hear will live. For as the Father has life in himself, so he has "
                   "granted the Son also to have life in himself, and has given him authority to execute judgment, because he is the Son of man. Do "
@@ -1966,7 +2135,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "John 6:51-58",
               readingType: ReadingTypeEnum.gospel,
-              text: "Jesus said to the crowd of the Jews: “I am the living bread which came down from heaven; if any one eats of this bread, he will live for ever; and the bread which I shall "
+              text:
+                  "Jesus said to the crowd of the Jews: “I am the living bread which came down from heaven; if any one eats of this bread, he will live for ever; and the bread which I shall "
                   "give for the life of the world is my flesh.” The Jews then disputed among themselves, saying, “How can this man give us his flesh to eat?” So Jesus said to them, "
                   "“Truly, truly, I say to you, unless you eat the flesh of the Son of man and drink his blood, you have no life in you; he who eats my flesh and drinks my blood has "
                   "eternal life, and I will raise him up at the last day. For my flesh is food indeed, and my blood is drink indeed. He who eats my flesh and drinks my blood abides "
@@ -1976,7 +2146,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "John 11:17-27",
               readingType: ReadingTypeEnum.gospel,
-              text: "When Jesus arrived in Bethany, he found that Laz′arus had already been in the tomb four days. Bethany was near Jerusalem, about two miles off, and "
+              text:
+                  "When Jesus arrived in Bethany, he found that Laz′arus had already been in the tomb four days. Bethany was near Jerusalem, about two miles off, and "
                   "many of the Jews had come to Martha and Mary to console them concerning their brother [Lazarus, who had died]. When Martha heard that Jesus was "
                   "coming, she went and met him, while Mary sat in the house. Martha said to Jesus, “Lord, if you had been here, my brother would not have died. And even "
                   "now I know that whatever you ask from God, God will give you.” Jesus said to her, “Your brother will rise again.” Martha said to him, “I know that he "
@@ -1987,7 +2158,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "John 11:32-45",
               readingType: ReadingTypeEnum.gospel,
-              text: "When Mary came where Jesus was and saw him, fell at his feet, saying to him, “Lord, if you had been here, my brother would not "
+              text:
+                  "When Mary came where Jesus was and saw him, fell at his feet, saying to him, “Lord, if you had been here, my brother would not "
                   "have died.” When Jesus saw her weeping, and the Jews who came with her also weeping, he was deeply moved in spirit and troubled; "
                   "and he said, “Where have you laid him?” They said to him, “Lord, come and see.” Jesus wept. So the Jews said, “See how he loved "
                   "him!” But some of them said, “Could not he who opened the eyes of the blind man have kept this man from dying?” Then Jesus, deeply "
@@ -2002,7 +2174,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "John 14:1-6",
               readingType: ReadingTypeEnum.gospel,
-              text: "Jesus said to his disciples: “Let not your hearts be troubled; believe in God, believe also in me. In my Father’s house are many rooms; "
+              text:
+                  "Jesus said to his disciples: “Let not your hearts be troubled; believe in God, believe also in me. In my Father’s house are many rooms; "
                   "if it were not so, would I have told you that I go to prepare a place for you? And when I go and prepare a place for you, I will come "
                   "again and will take you to myself, that where I am you may be also. And you know the way where I am going.” Thomas said to him, “Lord, we "
                   "do not know where you are going; how can we know the way?” Jesus said to him, “I am the way, and the truth, and the life; no one comes to "
@@ -2020,7 +2193,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Ezekiel 47:1-2, 8-9, 12",
               readingType: ReadingTypeEnum.first,
-              text: "The angel brought me back to the door of the temple; and behold, water was issuing from below the threshold of the temple toward "
+              text:
+                  "The angel brought me back to the door of the temple; and behold, water was issuing from below the threshold of the temple toward "
                   "the east (for the temple faced east); and the water was flowing down from below the south end of the threshold of the temple, "
                   "south of the altar. Then he brought me out by way of the north gate, and led me round on the outside to the outer gate, that "
                   "faces toward the east; and the water was coming out on the south side. And he said to me, “This water flows toward the eastern "
@@ -2034,15 +2208,18 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Ps 46:2-3, 5-6, 8-9",
               readingType: ReadingTypeEnum.responsorial,
-              response: "The waters of a river give joy to God's city, the most holy place the dwelling of the Most High.",
-              text: "God is our refuge and strength, a very present help in trouble. Therefore we will not fear though the earth should change, though the mountains shake in the heart of the sea.-"
+              response:
+                  "The waters of a river give joy to God's city, the most holy place the dwelling of the Most High.",
+              text:
+                  "God is our refuge and strength, a very present help in trouble. Therefore we will not fear though the earth should change, though the mountains shake in the heart of the sea.-"
                   "There is a river whose streams make glad the city of God, the holy habitation of the Most High. God is in the midst of her, she shall not be moved; God will help her right early.-"
                   "The LORD of hosts is with us; the God of Jacob is our refuge. Come, behold the works of the LORD, how he has wrought desolations in the earth.",
             ),
             const ReadingModel(
               title: "1 Corinthians 3:9c-11, 16-17",
               readingType: ReadingTypeEnum.second,
-              text: "Brethren: You are God’s building. According to the commission of God given to me, like a skilled master builder I laid a "
+              text:
+                  "Brethren: You are God’s building. According to the commission of God given to me, like a skilled master builder I laid a "
                   "foundation, and another man is building upon it. Let each man take care how he builds upon it. For no other foundation can any "
                   "one lay than that which is laid, which is Jesus Christ. Do you not know that you are God’s temple and that God’s Spirit dwells in "
                   "you? If any one destroys God’s temple, God will destroy him. For God’s temple is holy, and that temple you are.",
@@ -2051,12 +2228,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "2 Chronicles 7:16",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "I have chosen and consecrated this house, says the Lord, that my name may be there for ever.",
+              text:
+                  "I have chosen and consecrated this house, says the Lord, that my name may be there for ever.",
             ),
             const ReadingModel(
               title: "John 2:13-22",
               readingType: ReadingTypeEnum.gospel,
-              text: "The Passover of the Jews was at hand, and Jesus went up to Jerusalem. In the temple he found those who were selling oxen and sheep and pigeons, "
+              text:
+                  "The Passover of the Jews was at hand, and Jesus went up to Jerusalem. In the temple he found those who were selling oxen and sheep and pigeons, "
                   "and the money-changers at their business. And making a whip of cords, he drove them all, with the sheep and oxen, out of the temple; and he poured out "
                   "the coins of the money-changers and overturned their tables. And he told those who sold the pigeons, “Take these things away; you shall not make "
                   "my Father’s house a house of trade.” His disciples remembered that it was written, “Zeal for your house will consume me.” The Jews then said to him, "
@@ -2075,7 +2254,8 @@ Fellow heirs and guests to be. Amen. Alleluia.
             const ReadingModel(
               title: "Genesis 3:9-15, 20",
               readingType: ReadingTypeEnum.first,
-              text: "[After Adam had eaten of the tree,] the LORD God called to him, and said to him, “Where are you?” And he said, “I heard the sound of you in the "
+              text:
+                  "[After Adam had eaten of the tree,] the LORD God called to him, and said to him, “Where are you?” And he said, “I heard the sound of you in the "
                   "garden, and I was afraid, because I was naked; and I hid myself.” He said, “Who told you that you were naked? Have you eaten of the tree of which I "
                   "commanded you not to eat?” The man said, “The woman whom you gave to be with me, she gave me fruit of the tree, and I ate.” Then the LORD God said to "
                   "the woman, “What is this that you have done?” The woman said, “The serpent beguiled me, and I ate.” The LORD God said to the serpent, “Because you have "
@@ -2086,14 +2266,16 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "Ps 98:1, 2-3ab, 3cd-4",
               readingType: ReadingTypeEnum.responsorial,
               response: "O sing a new to the Lord, for he has worked wonders.",
-              text: "O sing to the LORD a new song, for he has done marvelous things! His right hand and his holy arm have gotten him victory.-"
+              text:
+                  "O sing to the LORD a new song, for he has done marvelous things! His right hand and his holy arm have gotten him victory.-"
                   "The LORD has made known his victory, he has revealed his vindication in the sight of the nations. He has remembered his steadfast love and faithfulness to the house of Israel.-"
                   "All the ends of the earth have seen the victory of our God. Make a joyful noise to the LORD, all the earth; break forth into joyous song and sing praises!",
             ),
             const ReadingModel(
               title: "Ephesians 1:3-6, 11-12",
               readingType: ReadingTypeEnum.second,
-              text: "Blessed be the God and Father of our Lord Jesus Christ, who has blessed us in Christ with every spiritual blessing in the "
+              text:
+                  "Blessed be the God and Father of our Lord Jesus Christ, who has blessed us in Christ with every spiritual blessing in the "
                   "heavenly places, even as he chose us in him before the foundation of the world, that we should be holy and blameless before him. "
                   "He destined us in love to be his sons through Jesus Christ, according to the purpose of his will, to the praise of his glorious "
                   "grace which he freely bestowed on us in the Beloved. In him, according to the purpose of him who accomplishes all things "
@@ -2104,12 +2286,14 @@ Fellow heirs and guests to be. Amen. Alleluia.
               title: "See Luke 1:28",
               readingType: gospelAcclaimationType,
               response: gospelAcclaimationResponse,
-              text: "Hail, Mary, full of grace, the Lord is with you; blessed are you among women.",
+              text:
+                  "Hail, Mary, full of grace, the Lord is with you; blessed are you among women.",
             ),
             const ReadingModel(
               title: "Luke 1:26-38",
               readingType: ReadingTypeEnum.gospel,
-              text: "The angel Gabriel was sent from God to a city of Galilee named Nazareth, to a "
+              text:
+                  "The angel Gabriel was sent from God to a city of Galilee named Nazareth, to a "
                   "virgin betrothed to a man whose name was Joseph, of the house of David; and the virgin’s name was "
                   "Mary. And he came to her and said, “Hail, full of grace, the Lord is with you!” But she was "
                   "greatly troubled at the saying, and considered in her mind what sort of greeting this might be. "
@@ -2175,11 +2359,13 @@ List<ReadingModel> get _krBaptismA => [
       ),
     ];
 
-List<ReadingModel> _krAscension(SundayYearEnum sunday, ReadingTypeEnum gospelAcclaimationType, String gospelAcclaimationResponse) {
+List<ReadingModel> _krAscension(SundayYearEnum sunday,
+    ReadingTypeEnum gospelAcclaimationType, String gospelAcclaimationResponse) {
   const ReadingModel firstReading = ReadingModel(
     title: "Acts 1:1-11",
     readingType: ReadingTypeEnum.first,
-    text: "In the first book, O Theoph′ilus, I have dealt with all that Jesus began to do and teach, until the day when he was taken up, after he had given commandment "
+    text:
+        "In the first book, O Theoph′ilus, I have dealt with all that Jesus began to do and teach, until the day when he was taken up, after he had given commandment "
         "through the Holy Spirit to the apostles whom he had chosen. To them he presented himself alive after his passion by many proofs, appearing to them during forty "
         "days, and speaking of the kingdom of God. And while staying with them he charged them not to depart from Jerusalem, but to wait for the promise of the Father, "
         "which, he said, “you heard from me, for John baptized with water, but before many days you shall be baptized with the Holy Spirit.” So when they had come "
@@ -2192,15 +2378,18 @@ List<ReadingModel> _krAscension(SundayYearEnum sunday, ReadingTypeEnum gospelAcc
   const ReadingModel responsorial = ReadingModel(
     title: "Ps 47:2-3, 6-7, 8-9",
     readingType: ReadingTypeEnum.responsorial,
-    response: "God goes up with shouts of joy; the Lord goes up with trumpet blast.",
-    text: "Clap your hands, all peoples! Shout to God with loud songs of joy! For the LORD, the Most High, is terrible, a great king over all the earth.-"
+    response:
+        "God goes up with shouts of joy; the Lord goes up with trumpet blast.",
+    text:
+        "Clap your hands, all peoples! Shout to God with loud songs of joy! For the LORD, the Most High, is terrible, a great king over all the earth.-"
         "God has gone up with a shout, the LORD with the sound of a trumpet. Sing praises to God, sing praises! Sing praises to our King, sing praises!-"
         "For God is the king of all the earth; sing praises with a psalm! God reigns over the nations; God sits on his holy throne.",
   );
   const ReadingModel secondReading = ReadingModel(
     title: "Ephesians 1:17-23",
     readingType: ReadingTypeEnum.second,
-    text: "Brethren: May the God of our Lord Jesus Christ, the Father of glory, give you a spirit of wisdom and of revelation in the knowledge of him, having the eyes of "
+    text:
+        "Brethren: May the God of our Lord Jesus Christ, the Father of glory, give you a spirit of wisdom and of revelation in the knowledge of him, having the eyes of "
         "your hearts enlightened, that you may know what is the hope to which he has called you, what are the riches of his glorious inheritance in the saints, and what is "
         "the immeasurable greatness of his power in us who believe, according to the working of his great might which he accomplished in Christ when he raised him from the "
         "dead and made him sit at his right hand in the heavenly places, far above all rule and authority and power and dominion, and above every name that is named, not "
@@ -2211,7 +2400,8 @@ List<ReadingModel> _krAscension(SundayYearEnum sunday, ReadingTypeEnum gospelAcc
     title: "Matthew 28:19a+20b",
     readingType: gospelAcclaimationType,
     response: gospelAcclaimationResponse,
-    text: "Go and make disciples of all nations, says the Lord; I am with you always, to the close of the age.",
+    text:
+        "Go and make disciples of all nations, says the Lord; I am with you always, to the close of the age.",
   );
   return switch (sunday) {
     SundayYearEnum.a => [
@@ -2235,7 +2425,8 @@ List<ReadingModel> _krAscension(SundayYearEnum sunday, ReadingTypeEnum gospelAcc
         const ReadingModel(
           title: "Ephesians 4:1-13",
           readingType: ReadingTypeEnum.second,
-          text: "Brethren: I therefore, a prisoner for the Lord, beg you to lead a life worthy of the calling to which you have been called, with all lowliness and meekness, "
+          text:
+              "Brethren: I therefore, a prisoner for the Lord, beg you to lead a life worthy of the calling to which you have been called, with all lowliness and meekness, "
               "with patience, forbearing one another in love, eager to maintain the unity of the Spirit in the bond of peace. There is one body and one Spirit, just as you "
               "were called to the one hope that belongs to your call, one Lord, one faith, one baptism, one God and Father of us all, who is above all and through all and in "
               "all. But grace was given to each of us according to the measure of Christ’s gift. Therefore it is said, “When he ascended on high he led a host of captives, "
@@ -2247,7 +2438,8 @@ List<ReadingModel> _krAscension(SundayYearEnum sunday, ReadingTypeEnum gospelAcc
         const ReadingModel(
           title: "Ephesians 4:1-7, 11-13",
           readingType: ReadingTypeEnum.second,
-          text: "Brethren: I, a prisoner for the Lord, beg you to lead a life worthy of the calling to which you have been called, with all lowliness and meekness, with "
+          text:
+              "Brethren: I, a prisoner for the Lord, beg you to lead a life worthy of the calling to which you have been called, with all lowliness and meekness, with "
               "patience, forbearing one another in love, eager to maintain the unity of the Spirit in the bond of peace. There is one body and one Spirit, just as you were "
               "called to the one hope that belongs to your call, one Lord, one faith, one baptism, one God and Father of us all, who is above all and through all and in "
               "all. But grace was given to each of us according to the measure of Christ’s gift. And his gifts were that some should be apostles, some prophets, some "
@@ -2259,7 +2451,8 @@ List<ReadingModel> _krAscension(SundayYearEnum sunday, ReadingTypeEnum gospelAcc
         const ReadingModel(
           title: "Mark 16:15-20",
           readingType: ReadingTypeEnum.gospel,
-          text: "[Appearing to the Eleven,] Jesus said to them, “Go into all the world and preach the gospel to the whole creation. He who believes and is baptized will be "
+          text:
+              "[Appearing to the Eleven,] Jesus said to them, “Go into all the world and preach the gospel to the whole creation. He who believes and is baptized will be "
               "saved; but he who does not believe will be condemned. And these signs will accompany those who believe: in my name they will cast out demons; they will "
               "speak in new tongues; they will pick up serpents, and if they drink any deadly thing, it will not hurt them; they will lay their hands on the sick, and they "
               "will recover.” So then the Lord Jesus, after he had spoken to them, was taken up into heaven, and sat down at the right hand of God. And they went forth "
@@ -2267,12 +2460,13 @@ List<ReadingModel> _krAscension(SundayYearEnum sunday, ReadingTypeEnum gospelAcc
         ),
       ],
     SundayYearEnum.c => [
-      firstReading,
-      responsorial,
+        firstReading,
+        responsorial,
         const ReadingModel(
           title: "Hebrews 9:24-28; 10:19-23",
           readingType: ReadingTypeEnum.second,
-          text: "Christ has entered, not into a sanctuary made with hands, a copy of the true one, but into heaven itself, now to appear in the presence of God on our behalf. "
+          text:
+              "Christ has entered, not into a sanctuary made with hands, a copy of the true one, but into heaven itself, now to appear in the presence of God on our behalf. "
               "Nor was it to offer himself repeatedly, as the high priest enters the Holy Place yearly with blood not his own; for then he would have had to suffer repeatedly "
               "since the foundation of the world. But as it is, he has appeared once for all at the end of the age to put away sin by the sacrifice of himself. And just as it "
               "is appointed for men to die once, and after that comes judgment, so Christ, having been offered once to bear the sins of many, will appear a second time, not to "
@@ -2282,12 +2476,13 @@ List<ReadingModel> _krAscension(SundayYearEnum sunday, ReadingTypeEnum gospelAcc
               "hearts sprinkled clean from an evil conscience and our bodies washed with pure water. Let us hold fast the confession of our hope without wavering, for he "
               "who promised is faithful.",
         ),
-      secondReading,
-      acclaimation,
+        secondReading,
+        acclaimation,
         const ReadingModel(
           title: "Luke 24:46-53",
           readingType: ReadingTypeEnum.gospel,
-          text: "Jesus said to his disciples: “Thus it is written, that the Christ should suffer and on the third day rise from the dead, and that repentance and forgiveness "
+          text:
+              "Jesus said to his disciples: “Thus it is written, that the Christ should suffer and on the third day rise from the dead, and that repentance and forgiveness "
               "of sins should be preached in his name to all nations, beginning from Jerusalem. You are witnesses of these things. And behold, I send the promise of my Father "
               "upon you; but stay in the city, until you are clothed with power from on high.” Then he led them out as far as Bethany, and lifting up his hands he blessed "
               "them. While he blessed them, he parted from them and was carried up into heaven. And they worshiped him, and returned to Jerusalem with great joy, and were "
@@ -2302,37 +2497,40 @@ ReadingModel _krTransfigurationGospel(SundayYearEnum sunday) {
     SundayYearEnum.a => const ReadingModel(
         title: "Matthew 17:1-9",
         readingType: ReadingTypeEnum.gospel,
-      text: "Jesus took with him Peter and James and John his brother, and led them up a high mountain apart. And he was transfigured before them, and his face "
-          "shone like the sun, and his garments became white as light. And behold, there appeared to them Moses and Eli′jah, talking with him. And Peter said "
-          "to Jesus, “Lord, it is well that we are here; if you wish, I will make three booths here, one for you and one for Moses and one for Eli′jah.” He "
-          "was still speaking, when behold, a bright cloud overshadowed them, and a voice from the cloud said, “This is my beloved Son, with whom I am well "
-          "pleased; listen to him.” When the disciples heard this, they fell on their faces, and were filled with awe. But Jesus came and touched them, "
-          "saying, “Rise, and have no fear.” And when they lifted up their eyes, they saw no one but Jesus only. And as they were coming down the mountain, "
-          "Jesus commanded them, “Tell no one the vision, until the Son of man is raised from the dead.”",
-    ),
+        text:
+            "Jesus took with him Peter and James and John his brother, and led them up a high mountain apart. And he was transfigured before them, and his face "
+            "shone like the sun, and his garments became white as light. And behold, there appeared to them Moses and Eli′jah, talking with him. And Peter said "
+            "to Jesus, “Lord, it is well that we are here; if you wish, I will make three booths here, one for you and one for Moses and one for Eli′jah.” He "
+            "was still speaking, when behold, a bright cloud overshadowed them, and a voice from the cloud said, “This is my beloved Son, with whom I am well "
+            "pleased; listen to him.” When the disciples heard this, they fell on their faces, and were filled with awe. But Jesus came and touched them, "
+            "saying, “Rise, and have no fear.” And when they lifted up their eyes, they saw no one but Jesus only. And as they were coming down the mountain, "
+            "Jesus commanded them, “Tell no one the vision, until the Son of man is raised from the dead.”",
+      ),
     SundayYearEnum.b => const ReadingModel(
         title: "Mark 9:2-10",
         readingType: ReadingTypeEnum.gospel,
-      text: "Jesus took with him Peter and James and John, and led them up a high mountain apart by themselves; and he was transfigured before them, and his "
-          "garments became glistening, intensely white, as no fuller on earth could bleach them. And there appeared to them Eli′jah with Moses; and they were "
-          "talking to Jesus. And Peter said to Jesus, “Master, it is well that we are here; let us make three booths, one for you and one for Moses and one for "
-          "Eli′jah.” For he did not know what to say, for they were exceedingly afraid. And a cloud overshadowed them, and a voice came out of the cloud, “This "
-          "is my beloved Son; listen to him.” And suddenly looking around they no longer saw any one with them but Jesus only. And as they were coming down the "
-          "mountain, he charged them to tell no one what they had seen, until the Son of man should have risen from the dead. So they kept the matter to "
-          "themselves, questioning what the rising from the dead meant.",
-    ),
+        text:
+            "Jesus took with him Peter and James and John, and led them up a high mountain apart by themselves; and he was transfigured before them, and his "
+            "garments became glistening, intensely white, as no fuller on earth could bleach them. And there appeared to them Eli′jah with Moses; and they were "
+            "talking to Jesus. And Peter said to Jesus, “Master, it is well that we are here; let us make three booths, one for you and one for Moses and one for "
+            "Eli′jah.” For he did not know what to say, for they were exceedingly afraid. And a cloud overshadowed them, and a voice came out of the cloud, “This "
+            "is my beloved Son; listen to him.” And suddenly looking around they no longer saw any one with them but Jesus only. And as they were coming down the "
+            "mountain, he charged them to tell no one what they had seen, until the Son of man should have risen from the dead. So they kept the matter to "
+            "themselves, questioning what the rising from the dead meant.",
+      ),
     SundayYearEnum.c => const ReadingModel(
         title: "Luke 9:28b-36",
         readingType: ReadingTypeEnum.gospel,
-      text: "Jesus took with him Peter and John and James, and went up on the mountain to pray. And as he was praying, the appearance of his countenance "
-          "was altered, and his clothing became dazzling white. And behold, two men talked with him, Moses and Eli′jah, who appeared in glory and spoke of "
-          "his departure, which he was to accomplish at Jerusalem. Now Peter and those who were with him were heavy with sleep but kept awake, and they saw "
-          "his glory and the two men who stood with him. And as the men were parting from him, Peter said to Jesus, “Master, it is well that we are here; "
-          "let us make three booths, one for you and one for Moses and one for Eli′jah”—not knowing what he said. As he said this, a cloud came and "
-          "overshadowed them; and they were afraid as they entered the cloud. And a voice came out of the cloud, saying, “This is my Son, my Chosen; "
-          "listen to him!” And when the voice had spoken, Jesus was found alone. And they kept silence and told no one in those days anything of what they "
-          "had seen.",
-    ),
+        text:
+            "Jesus took with him Peter and John and James, and went up on the mountain to pray. And as he was praying, the appearance of his countenance "
+            "was altered, and his clothing became dazzling white. And behold, two men talked with him, Moses and Eli′jah, who appeared in glory and spoke of "
+            "his departure, which he was to accomplish at Jerusalem. Now Peter and those who were with him were heavy with sleep but kept awake, and they saw "
+            "his glory and the two men who stood with him. And as the men were parting from him, Peter said to Jesus, “Master, it is well that we are here; "
+            "let us make three booths, one for you and one for Moses and one for Eli′jah”—not knowing what he said. As he said this, a cloud came and "
+            "overshadowed them; and they were afraid as they entered the cloud. And a voice came out of the cloud, saying, “This is my Son, my Chosen; "
+            "listen to him!” And when the voice had spoken, Jesus was found alone. And they kept silence and told no one in those days anything of what they "
+            "had seen.",
+      ),
   };
 }
 
@@ -2344,7 +2542,8 @@ List<ReadingModel> _krHolyFamily(SundayYearEnum sunday, bool isSunday) {
   const ReadingModel firstReading = ReadingModel(
     title: "Sirach 3:2-6, 12-14",
     readingType: ReadingTypeEnum.first,
-    text: "The Lord honored the father above the children, and he confirmed the right of the mother over her sons. Whoever honors his father atones "
+    text:
+        "The Lord honored the father above the children, and he confirmed the right of the mother over her sons. Whoever honors his father atones "
         "for sins, and preserves himself from them. When he prays, he is heard; and whoever glorifies his mother is like one who lays up treasure. "
         "Whoever honors his father will be gladdened by his own children, and when he prays he will be heard. Whoever glorifies his father will have "
         "long life, and whoever obeys the Lord will refresh his mother. O son, help your father in his old age, and do not grieve him as long as he "
@@ -2355,14 +2554,16 @@ List<ReadingModel> _krHolyFamily(SundayYearEnum sunday, bool isSunday) {
     title: "Ps 128:1-2, 3, 4-5",
     readingType: ReadingTypeEnum.responsorial,
     response: "Blessed are all who fear the Lord and walk in his ways.",
-    text: "Blessed is every one who fears the LORD, who walks in his ways! You shall eat the fruit of the labor of your hands; you shall be happy, and it shall be well with you.-"
+    text:
+        "Blessed is every one who fears the LORD, who walks in his ways! You shall eat the fruit of the labor of your hands; you shall be happy, and it shall be well with you.-"
         "Your wife will be like a fruitful vine within your house; your children will be like olive shoots around your table.-"
         "Behold, thus shall the man be blessed who fears the LORD. The Lord bless you from Zion! May you see the prosperity of Jerusalem all the days of your life!",
   );
   final ReadingModel firstOrSecondReadingI = ReadingModel(
     title: "Colossians 3:12-21",
     readingType: secondOrFirstReading,
-    text: "Brethren: Put on, as God’s chosen ones, holy and beloved, compassion, kindness, lowliness, meekness, and patience, forbearing one another "
+    text:
+        "Brethren: Put on, as God’s chosen ones, holy and beloved, compassion, kindness, lowliness, meekness, and patience, forbearing one another "
         "and, if one has a complaint against another, forgiving each other; as the Lord has forgiven you, so you also must forgive. And above all "
         "these put on love, which binds everything together in perfect harmony. And let the peace of Christ rule in your hearts, to which indeed you "
         "were called in the one body. And be thankful. Let the word of Christ dwell in you richly, as you teach and admonish one another in all "
@@ -2374,7 +2575,8 @@ List<ReadingModel> _krHolyFamily(SundayYearEnum sunday, bool isSunday) {
   final ReadingModel firstOrSecondReadingII = ReadingModel(
     title: "Colossians 3:12-17",
     readingType: secondOrFirstReading,
-    text: "Brethren: Put on, as God’s chosen ones, holy and beloved, compassion, kindness, lowliness, meekness, and patience, forbearing one another "
+    text:
+        "Brethren: Put on, as God’s chosen ones, holy and beloved, compassion, kindness, lowliness, meekness, and patience, forbearing one another "
         "and, if one has a complaint against another, forgiving each other; as the Lord has forgiven you, so you also must forgive. And above all "
         "these put on love, which binds everything together in perfect harmony. And let the peace of Christ rule in your hearts, to which indeed you "
         "were called in the one body. And be thankful. Let the word of Christ dwell in you richly, as you teach and admonish one another in all "
@@ -2384,20 +2586,22 @@ List<ReadingModel> _krHolyFamily(SundayYearEnum sunday, bool isSunday) {
   const ReadingModel acclaimation = ReadingModel(
     title: "Colossians 3:15a+16a",
     readingType: ReadingTypeEnum.gospelAcclaimation,
-    text: "Let the peace of Christ rule in your hearts, let the word of Christ dwell in you richly.",
+    text:
+        "Let the peace of Christ rule in your hearts, let the word of Christ dwell in you richly.",
     response: "Alleluia, Alleluia.",
   );
   return switch (sunday) {
     SundayYearEnum.a => [
-       firstReading,
-      responsorial,
-      firstOrSecondReadingI,
-      firstOrSecondReadingII,
-      acclaimation,
+        firstReading,
+        responsorial,
+        firstOrSecondReadingI,
+        firstOrSecondReadingII,
+        acclaimation,
         const ReadingModel(
           title: "Matthew 2:13-15, 19-23",
           readingType: ReadingTypeEnum.gospel,
-          text: "When the Wise Men had departed, behold, an angel of the Lord appeared to Joseph in a dream and said, “Rise, take the child and his mother, and flee "
+          text:
+              "When the Wise Men had departed, behold, an angel of the Lord appeared to Joseph in a dream and said, “Rise, take the child and his mother, and flee "
               "to Egypt, and remain there till I tell you; for Herod is about to search for the child, to destroy him.” And he rose and took the child and his mother "
               "by night, and departed to Egypt, and remained there until the death of Herod. This was to fulfil what the Lord had spoken by the prophet, “Out of Egypt "
               "have I called my son.” But when Herod died, behold, an angel of the Lord appeared in a dream to Joseph in Egypt, saying, “Rise, take the child and his "
@@ -2408,53 +2612,59 @@ List<ReadingModel> _krHolyFamily(SundayYearEnum sunday, bool isSunday) {
         ),
       ],
     SundayYearEnum.b => [
-      const ReadingModel(
-        title: "Genesis 15:1-6; 21:1-3",
-        readingType: ReadingTypeEnum.first,
-        text: "After these things the word of the LORD came to Abram in a vision, “Fear not, Abram, I am your shield; your reward shall be very "
-            "great.” But Abram said, “O Lord GOD, what will you give me, for I continue childless, and the heir of my house is Elie′zer of "
-            "Damascus?” And Abram said, “Behold, you have given me no offspring; and a slave born in my house will be my heir.” And behold, the word "
-            "of the LORD came to him, “This man shall not be your heir; your own son shall be your heir.” And he brought him outside and said, “Look "
-            "toward heaven, and number the stars, if you are able to number them.” Then he said to him, “So shall your descendants be.” And he "
-            "believed the LORD; and he reckoned it to him as righteousness. The Lord visited Sarah as he had said, and the Lord did to Sarah as he "
-            "had promised. And Sarah conceived, and bore Abraham a son in his old age at the time of which God had spoken to him. Abraham called the "
-            "name of his son who was born to him, whom Sarah bore him, Isaac.",
-      ),
+        const ReadingModel(
+          title: "Genesis 15:1-6; 21:1-3",
+          readingType: ReadingTypeEnum.first,
+          text:
+              "After these things the word of the LORD came to Abram in a vision, “Fear not, Abram, I am your shield; your reward shall be very "
+              "great.” But Abram said, “O Lord GOD, what will you give me, for I continue childless, and the heir of my house is Elie′zer of "
+              "Damascus?” And Abram said, “Behold, you have given me no offspring; and a slave born in my house will be my heir.” And behold, the word "
+              "of the LORD came to him, “This man shall not be your heir; your own son shall be your heir.” And he brought him outside and said, “Look "
+              "toward heaven, and number the stars, if you are able to number them.” Then he said to him, “So shall your descendants be.” And he "
+              "believed the LORD; and he reckoned it to him as righteousness. The Lord visited Sarah as he had said, and the Lord did to Sarah as he "
+              "had promised. And Sarah conceived, and bore Abraham a son in his old age at the time of which God had spoken to him. Abraham called the "
+              "name of his son who was born to him, whom Sarah bore him, Isaac.",
+        ),
         firstReading,
         const ReadingModel(
           title: "Ps 105:1-2, 3-4, 5-6, 8-9",
           readingType: ReadingTypeEnum.responsorial,
-          response: "He, the Lord, is our God; he remembers his covenant for ever.",
-          text: "O give thanks to the LORD, call on his name, make known his deeds among the peoples! Sing to him, sing praises to him, tell of all his wonderful works!-"
+          response:
+              "He, the Lord, is our God; he remembers his covenant for ever.",
+          text:
+              "O give thanks to the LORD, call on his name, make known his deeds among the peoples! Sing to him, sing praises to him, tell of all his wonderful works!-"
               "Glory in his holy name; let the hearts of those who seek the LORD rejoice! Seek the LORD and his strength, seek his presence continually!-"
               "Remember the wonderful works that he has done, his miracles, and the judgments he uttered, O offspring of Abraham his servant, sons of Jacob, his chosen ones!-"
               "He is mindful of his covenant for ever, of the word that he commanded, for a thousand generations, the covenant which he made with Abraham, his sworn promise to Isaac",
         ),
-      responsorial,
-      ReadingModel(
-        title: "Hebrews 11:8, 11-12, 17-19",
-        readingType: secondOrFirstReading,
-        text: "Brethren: By faith Abraham obeyed when he was called to go out to a place which he was to receive as an inheritance; and he went out, "
-            "not knowing where he was to go. By faith Sarah herself received power to conceive, even when she was past the age, since she considered "
-            "him faithful who had promised. Therefore from one man, and him as good as dead, were born descendants as many as the stars of heaven and "
-            "as the innumerable grains of sand by the seashore. By faith Abraham, when he was tested, offered up Isaac, and he who had received the "
-            "promises was ready to offer up his only son, of whom it was said, “Through Isaac shall your descendants be named.” He considered that "
-            "God was able to raise men even from the dead; hence he did receive him back, and this was a symbol.",
-      ),
+        responsorial,
+        ReadingModel(
+          title: "Hebrews 11:8, 11-12, 17-19",
+          readingType: secondOrFirstReading,
+          text:
+              "Brethren: By faith Abraham obeyed when he was called to go out to a place which he was to receive as an inheritance; and he went out, "
+              "not knowing where he was to go. By faith Sarah herself received power to conceive, even when she was past the age, since she considered "
+              "him faithful who had promised. Therefore from one man, and him as good as dead, were born descendants as many as the stars of heaven and "
+              "as the innumerable grains of sand by the seashore. By faith Abraham, when he was tested, offered up Isaac, and he who had received the "
+              "promises was ready to offer up his only son, of whom it was said, “Through Isaac shall your descendants be named.” He considered that "
+              "God was able to raise men even from the dead; hence he did receive him back, and this was a symbol.",
+        ),
         firstOrSecondReadingI,
-      firstOrSecondReadingII,
-      const ReadingModel(
-        title: "Hebrews 1:1-2",
-        readingType: ReadingTypeEnum.gospelAcclaimation,
-        text: "In many and various ways God spoke of old to our fathers by the prophets; but in these last days he has spoken to us "
-            "by a Son",
-        response: "Alleluia, Alleluia.",
-      ),
-      acclaimation,
+        firstOrSecondReadingII,
+        const ReadingModel(
+          title: "Hebrews 1:1-2",
+          readingType: ReadingTypeEnum.gospelAcclaimation,
+          text:
+              "In many and various ways God spoke of old to our fathers by the prophets; but in these last days he has spoken to us "
+              "by a Son",
+          response: "Alleluia, Alleluia.",
+        ),
+        acclaimation,
         const ReadingModel(
           title: "Luke 2:22-40",
           readingType: ReadingTypeEnum.gospel,
-          text: "When the time came for their purification according to the law of Moses, the parents of Jesus "
+          text:
+              "When the time came for their purification according to the law of Moses, the parents of Jesus "
               "brought him up to Jerusalem to present him to the Lord (as it is written in the law of the Lord, "
               "“Every male that opens the womb shall be called holy to the Lord”) and to offer a sacrifice "
               "according to what is said in the law of the Lord, “a pair of turtledoves, or two young pigeons.” "
@@ -2478,53 +2688,58 @@ List<ReadingModel> _krHolyFamily(SundayYearEnum sunday, bool isSunday) {
         const ReadingModel(
           title: "Luke 2:22, 39-40",
           readingType: ReadingTypeEnum.gospel,
-          text: "When the time came for their purification according to the law of Moses, they brought him up to Jerusalem to present him to the "
+          text:
+              "When the time came for their purification according to the law of Moses, they brought him up to Jerusalem to present him to the "
               "Lord. And when they had performed everything according to the law of the Lord, they returned into Galilee, to their own city, "
               "Nazareth. And the child grew and became strong, filled with wisdom; and the favor of God was upon him.",
         ),
       ],
     SundayYearEnum.c => [
-      const ReadingModel(
-        title: "1 Samuel 1:20-22, 24-28",
-        readingType: ReadingTypeEnum.first,
-        text: "And in due time Hannah conceived and bore a son, and she called his name Samuel, for she said, “I have asked him of the LORD.” And the man Elka′nah and all his house went up to offer to the LORD the yearly sacrifice, and "
-            "to pay his vow. But Hannah did not go up, for she said to her husband, “As soon as the child is weaned, I will bring him, that he may appear in the presence of the LORD, and abide there for ever.” And when she had weaned him, she "
-            "took him up with her, along with a three-year-old bull, an ephah of flour, and a skin of wine; and she brought him to the house of the LORD at Shiloh; and the child was young. Then they slew the bull, and they brought the child to "
-            "Eli. And she said, “Oh, my lord! As you live, my lord, I am the woman who was standing here in your presence, praying to the LORD. For this child I prayed; and the LORD has granted me my petition which I made to him. Therefore I have "
-            "lent him to the LORD; as long as he lives, he is lent to the LORD.”",
-      ),
+        const ReadingModel(
+          title: "1 Samuel 1:20-22, 24-28",
+          readingType: ReadingTypeEnum.first,
+          text:
+              "And in due time Hannah conceived and bore a son, and she called his name Samuel, for she said, “I have asked him of the LORD.” And the man Elka′nah and all his house went up to offer to the LORD the yearly sacrifice, and "
+              "to pay his vow. But Hannah did not go up, for she said to her husband, “As soon as the child is weaned, I will bring him, that he may appear in the presence of the LORD, and abide there for ever.” And when she had weaned him, she "
+              "took him up with her, along with a three-year-old bull, an ephah of flour, and a skin of wine; and she brought him to the house of the LORD at Shiloh; and the child was young. Then they slew the bull, and they brought the child to "
+              "Eli. And she said, “Oh, my lord! As you live, my lord, I am the woman who was standing here in your presence, praying to the LORD. For this child I prayed; and the LORD has granted me my petition which I made to him. Therefore I have "
+              "lent him to the LORD; as long as he lives, he is lent to the LORD.”",
+        ),
         firstReading,
         const ReadingModel(
           title: "Ps 84:2-3, 5-6, 9-10",
           readingType: ReadingTypeEnum.responsorial,
           response: "Blessed are they who dwell in your house, O Lord.",
-          text: "How lovely is your dwelling place, O LORD of hosts! My soul longs, yes, faints for the courts of the LORD; my heart and flesh sing for joy to the living God.-"
+          text:
+              "How lovely is your dwelling place, O LORD of hosts! My soul longs, yes, faints for the courts of the LORD; my heart and flesh sing for joy to the living God.-"
               "Blessed are those who dwell in your house, ever singing your praise! Blessed are the men whose strength is in you, in whose heart are the highways to Zion.-"
               "O LORD God of hosts, hear my prayer; give ear, O God of Jacob! Behold our shield, O God; look upon the face of your anointed!",
         ),
-      responsorial,
+        responsorial,
         ReadingModel(
           title: "1 John 3:1-2, 21-24",
           readingType: secondOrFirstReading,
-          text: "Beloved: See what love the Father has given us, that we should be called children of God; and so we are. The reason why the world does not know us is that it did not know him. Beloved, we are God’s children now; it does not yet "
+          text:
+              "Beloved: See what love the Father has given us, that we should be called children of God; and so we are. The reason why the world does not know us is that it did not know him. Beloved, we are God’s children now; it does not yet "
               "appear what we shall be, but we know that when he appears we shall be like him, for we shall see him as he is. Beloved, if our hearts do not condemn us, we have confidence before God; and we receive from him whatever we ask, "
               "because we keep his commandments and do what pleases him. And this is his commandment, that we should believe in the name of his Son Jesus Christ and love one another, just as he has commanded us. All who keep his commandments abide "
               "in him, and he in them. And by this we know that he abides in us, by the Spirit which he has given us.",
         ),
-      firstOrSecondReadingI,
-      firstOrSecondReadingII,
+        firstOrSecondReadingI,
+        firstOrSecondReadingII,
         const ReadingModel(
           title: "cf. Acts 16:14b",
           readingType: ReadingTypeEnum.gospelAcclaimation,
-          text: "Open our hearts, O Lord, that we may give heed to the words of your Son.",
+          text:
+              "Open our hearts, O Lord, that we may give heed to the words of your Son.",
           response: "Alleluia, Alleluia.",
         ),
-      acclaimation,
+        acclaimation,
         const ReadingModel(
           title: "Luke 2:41-52",
           readingType: ReadingTypeEnum.gospel,
           text:
-          "The parents of Jesus went to Jerusalem every year at the feast of the Passover. And when he was twelve years old, they went up according to custom; and "
+              "The parents of Jesus went to Jerusalem every year at the feast of the Passover. And when he was twelve years old, they went up according to custom; and "
               "when the feast was ended, as they were returning, the boy Jesus stayed behind in Jerusalem. His parents did not know it, but supposing him to be in the "
               "company they went a day’s journey, and they sought him among their kinsfolk and acquaintances; and when they did not find him, they returned to Jerusalem, "
               "seeking him. After three days they found him in the temple, sitting among the teachers, listening to them and asking them questions; and all who heard him "
