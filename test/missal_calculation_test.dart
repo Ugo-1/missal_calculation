@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:missal_calculation/get_reading.dart';
 
@@ -29,11 +30,11 @@ void main() {
       final christmasReadings = missal.getReadings(DateTime(2025, 12, 25));
 
       for (var missalModel in christmasReadings) {
-        print("🎉 ${missalModel.title} (${missalModel.color.name})");
+        debugPrint("🎉 ${missalModel.title} (${missalModel.color.name})");
         for (var reading in missalModel.readings) {
-          print("- ${reading.readingType.name}: ${reading.title}");
+          debugPrint("- ${reading.readingType.name}: ${reading.title}");
         }
-        print('');
+        debugPrint('');
       }
     });
   });
