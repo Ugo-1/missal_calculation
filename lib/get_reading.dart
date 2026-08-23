@@ -105,7 +105,7 @@ class MissalCalculation {
 
   List<MissalModel> getReadings(DateTime dateTime) {
     final DateTime date = dateTime.onlyDate;
-    if (dateTime.year != _initializedYear){
+    if (dateTime.year != _initializedYear) {
       _liturgicalDates.initialize(date.year);
       _initializedYear = date.year;
     }
@@ -121,45 +121,49 @@ class MissalCalculation {
   }
 
   MissalModel _liturgicalYearReadings(DateTime date) {
+    final AdventToBaptismCalc adventToBaptismCalc = AdventToBaptismCalc();
+    final BaptismToEasterCalc baptismToEasterCalc = BaptismToEasterCalc();
+    final EasterToCTKCalc easterToCTKCalc = EasterToCTKCalc();
+
     // New year - Baptism
     final (DateTime, DateTime) newYearToBaptismRange =
-        AdventToBaptismCalc.christmasToBaptismRange(date.year, true);
+        adventToBaptismCalc.christmasToBaptismRange(date.year, true);
     if (dateIsInRange(date, newYearToBaptismRange)) {
       return _newYearToBaptism(newYearToBaptismRange, date);
     }
     // Ordinary Time - Tuesday before ash wednesday
     final (DateTime, DateTime) baptismToBeforeAshWedRange =
-        BaptismToEasterCalc.baptismToBeforeAshWednesdayRange();
+        baptismToEasterCalc.baptismToBeforeAshWednesdayRange();
     if (dateIsInRange(date, baptismToBeforeAshWedRange)) {
       return _baptismToBeforeAshWednesday(baptismToBeforeAshWedRange, date);
     }
     // Ash Wednesday - Holy Saturday
     final (DateTime, DateTime) ashWedToHolySaturdayRange =
-        BaptismToEasterCalc.ashWednesdayToHolySaturdayRange();
+        baptismToEasterCalc.ashWednesdayToHolySaturdayRange();
     if (dateIsInRange(date, ashWedToHolySaturdayRange)) {
       return _ashWednesdayToHolySaturday(ashWedToHolySaturdayRange, date);
     }
     // Easter - Pentecost
     final (DateTime, DateTime) easterToPentecostRange =
-        EasterToCTKCalc.easterToPentecostRange();
+        easterToCTKCalc.easterToPentecostRange();
     if (dateIsInRange(date, easterToPentecostRange)) {
       return _easterToPentecost(easterToPentecostRange, date);
     }
     // Pentecost - Saturday before advent of the next year
     final (DateTime, DateTime) pentecostToAdventRange =
-        EasterToCTKCalc.pentecostToAdventRange();
+        easterToCTKCalc.pentecostToAdventRange();
     if (dateIsInRange(date, pentecostToAdventRange)) {
       return _pentecostToAdvent(pentecostToAdventRange, date);
     }
     // Advent - Christmas eve
     final (DateTime, DateTime) adventToChristmasEveRange =
-        AdventToBaptismCalc.adventToChristmasEveRange(date.year);
+        adventToBaptismCalc.adventToChristmasEveRange(date.year);
     if (dateIsInRange(date, adventToChristmasEveRange)) {
       return _adventToChristmasEve(adventToChristmasEveRange, date);
     }
     // Christmas - End of the year
     final (DateTime, DateTime) xmasToYearEndRange =
-        AdventToBaptismCalc.christmasToBaptismRange(date.year, false);
+        adventToBaptismCalc.christmasToBaptismRange(date.year, false);
     if (dateIsInRange(date, xmasToYearEndRange)) {
       return _xmasToYearEnd(xmasToYearEndRange, date);
     } else {
