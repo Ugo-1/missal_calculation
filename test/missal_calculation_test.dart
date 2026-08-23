@@ -26,16 +26,6 @@ void main() {
       final List<String> usTitle = missal.getReadings(nigeriaIndependence).map((e) => e.title).toList();
       expect(missal.countryCode, isNot("ng"));
       expect(usTitle, isNot(contains("Solemnity of Our Lady, Queen And Patroness of Nigeria")));
-
-      final christmasReadings = missal.getReadings(DateTime(2025, 12, 25));
-
-      for (var missalModel in christmasReadings) {
-        debugPrint("🎉 ${missalModel.title} (${missalModel.color.name})");
-        for (var reading in missalModel.readings) {
-          debugPrint("- ${reading.readingType.name}: ${reading.title}");
-        }
-        debugPrint('');
-      }
     });
   });
 }

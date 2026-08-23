@@ -6479,8 +6479,8 @@ Map<int, List<LiturgicDayReading>> krOrdinaryTimeWeekdayII (SundayYearEnum sunda
               "What! Do you not have houses to eat and drink in? Or do you despise the church of God and humiliate those who have nothing? What shall "
               "I say to you? Shall I commend you in this? No, I will not. For I received from the Lord what I also delivered to you, that the Lord "
               "Jesus on the night when he was betrayed took bread, and when he had given thanks, he broke it, and said, “This is my body which is for "
-              "you. Do this in remembrance of me.” In the same way also the cup, after supper, saying, “This cup is the new covenant in my blood. Do "
-              "this, as often as you drink it, in remembrance of me.” For as often as you eat this bread and drink the cup, you proclaim the Lord’s "
+              "you. Do this in remembrance of me.” In the same way also the chalice, after supper, saying, “This chalice is the new covenant in my blood. Do "
+              "this, as often as you drink it, in remembrance of me.” For as often as you eat this bread and drink the chalice, you proclaim the Lord’s "
               "death until he comes. So then, my brethren, when you come together to eat, wait for one another.",
         ),
         ReadingModel(

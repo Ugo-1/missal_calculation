@@ -130,9 +130,9 @@ List<MissalModel> krOtherHolyThursdayReadings(MissalModel model){
           title: "1 Corinthians 11:23-26",
           readingType: ReadingTypeEnum.second,
           text: "Brethren: I received from the Lord what I also delivered to you, that the Lord Jesus on the night when he was betrayed took bread, and when he had "
-              "given thanks, he broke it, and said, “This is my body which is for you. Do this in remembrance of me.” In the same way also the cup, after supper, "
-              "saying, “This cup is the new covenant in my blood. Do this, as often as you drink it, in remembrance of me.” For as often as you eat this bread and "
-              "drink the cup, you proclaim the Lord’s death until he comes.",
+              "given thanks, he broke it, and said, “This is my body which is for you. Do this in remembrance of me.” In the same way also the chalice, after supper, "
+              "saying, “This chalice is the new covenant in my blood. Do this, as often as you drink it, in remembrance of me.” For as often as you eat this bread and "
+              "drink the chalice, you proclaim the Lord’s death until he comes.",
         ),
         const ReadingModel(
           title: "John 13:34",
@@ -475,8 +475,8 @@ List<MissalModel> krOtherSSPeterAndPaulReadings(MissalModel model) {
               "time he said to him, “Simon, son of John, do you love me?” He said to him, “Yes, Lord; you know that I love you.” He said to "
               "him, “Tend my sheep.” He said to him the third time, “Simon, son of John, do you love me?” Peter was grieved because he said to "
               "him the third time, “Do you love me?” And he said to him, “Lord, you know everything; you know that I love you.” Jesus said to him, "
-              "“Feed my sheep. Truly, truly, I say to you, when you were young, you girded yourself and walked where you would; but when you are "
-              "old, you will stretch out your hands, and another will gird you and carry you where you do not wish to go.” (This he said to show "
+              "“Feed my sheep. Truly, truly, I say to you, when you were young, you fastened your own belt and walked where you would; but when you are "
+              "old, you will stretch out your hands, and another will fasten your belt for you and carry you where you do not wish to go.” (This he said to show "
               "by what death he was to glorify God.) And after this he said to him, “Follow me.”",
         ),
       ],
