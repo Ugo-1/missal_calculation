@@ -1,6 +1,6 @@
 name: missal_calculation
 description: "The package that handles calculations for the daily and sunday readings"
-version: 0.0.2
+version: 0.0.3
 homepage:
 
 environment:
