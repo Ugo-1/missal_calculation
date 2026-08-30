@@ -1,4 +1,5 @@
 import 'package:missal_calculation/catholic_date/calculations/liturgical_dates.dart';
+import 'package:missal_calculation/extension/date_extension.dart';
 import 'package:missal_calculation/utils/enum.dart';
 
 bool dateIsInRangeList(DateTime date, List<(DateTime, DateTime)> dateRange) {
@@ -55,12 +56,16 @@ List<(DateTime, DateTime)> findWeeksInRange((DateTime, DateTime) range){
       firstDay.isAtSameMomentAs(lastDay)) {
     final daysToAdd =
     firstDay.weekday == 7 ? 6 : 7 - (firstDay.weekday + 1);
-    DateTime currentEnd = firstDay.add(Duration(days: daysToAdd));
+    // This adds the number of days to the first day of the week to get the last
+    // day of the week
+    DateTime currentEnd = firstDay.addDays(daysToAdd);
     if (currentEnd.isAfter(lastDay)) {
       currentEnd = lastDay;
     }
     weeks.add((firstDay, currentEnd));
-    firstDay = currentEnd.add(const Duration(days: 1));
+    // This adds one day to the current end to get the first day of the next
+    // week
+    firstDay = currentEnd.addDays(1);
   }
   return weeks;
 }

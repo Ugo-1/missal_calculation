@@ -1,3 +1,5 @@
+import 'package:missal_calculation/extension/date_extension.dart';
+
 DateTime kdtNativityOfStJohnTheBaptist(int year) => DateTime(year, 6, 24);
 DateTime kdtSSPeterAndPaul(int year) => DateTime(year, 6, 29);
 
@@ -221,8 +223,7 @@ DateTime kdtImmaculateConceptionOfBVM(int year) {
 
 DateTime kdtUsThanksgivingDay(int year) {
   DateTime firstDayOfMonth = DateTime(year, 11);
-  DateTime firstThursday = firstDayOfMonth.add(
-    Duration(days: (DateTime.thursday - firstDayOfMonth.weekday) % DateTime.daysPerWeek),
-  );
-  return firstThursday.add(const Duration(days: 21));
+  final dayToAdd = (DateTime.thursday - firstDayOfMonth.weekday) % DateTime.daysPerWeek;
+  DateTime firstThursday = firstDayOfMonth.addDays(dayToAdd);
+  return firstThursday.addDays(21);
 }

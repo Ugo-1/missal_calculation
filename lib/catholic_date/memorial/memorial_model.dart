@@ -1,6 +1,7 @@
 import 'package:missal_calculation/catholic_date/calculations/liturgical_dates.dart';
 import 'package:missal_calculation/catholic_date/memorial/memorial_enum.dart';
 import 'package:missal_calculation/constants/date_constants.dart';
+import 'package:missal_calculation/extension/date_extension.dart';
 import 'package:missal_calculation/utils/enum.dart';
 
 class MemorialModel {
@@ -985,9 +986,9 @@ List<MemorialModel> _generateDecemberMemorials(int year) {
 List<MemorialModel> _generateOthers(int year) {
   final DateTime pentecost =
       LiturgicalDates.instance.getDate(LiturgicDatesEnum.pentecost);
-  final DateTime memBVMMotherDate = pentecost.add(const Duration(days: 1));
+  final DateTime memBVMMotherDate = pentecost.addDays(1);
   final DateTime immaculateHeartBVMDate =
-      pentecost.add(const Duration(days: 20));
+      pentecost.addDays(20);
 
   return [
     MemorialModel(
