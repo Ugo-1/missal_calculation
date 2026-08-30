@@ -1,7 +1,7 @@
 import 'package:missal_calculation/catholic_date/calculations/liturgical_dates.dart';
 import 'package:missal_calculation/catholic_date/solemnities/solemnities_enum.dart';
 import 'package:missal_calculation/constants/date_constants.dart';
-import 'package:missal_calculation/constants/duration_constants.dart';
+import 'package:missal_calculation/extension/date_extension.dart';
 import 'package:missal_calculation/utils/enum.dart';
 
 class SolemnityAndMajorFeastModel {
@@ -29,9 +29,9 @@ List<SolemnityAndMajorFeastModel> generateSolemnities(DateTime date) {
   final LiturgicalDates instance = LiturgicalDates.instance;
   final DateTime easter = instance.getDate(LiturgicDatesEnum.easter);
   final DateTime pentecost = instance.getDate(LiturgicDatesEnum.pentecost);
-  final DateTime mostHolyTrinity = pentecost.add(const Duration(days: 7));
-  final DateTime corpusChristi = mostHolyTrinity.add(const Duration(days: 7));
-  final DateTime mostSacredHeart = corpusChristi.add(const Duration(days: 5));
+  final DateTime mostHolyTrinity = pentecost.addDays(7);
+  final DateTime corpusChristi = mostHolyTrinity.addDays(7);
+  final DateTime mostSacredHeart = corpusChristi.addDays(5);
   final String countryCode = instance.countryCode;
   return [
     SolemnityAndMajorFeastModel(
@@ -128,18 +128,19 @@ List<SolemnityAndMajorFeastModel> generateSolemnities(DateTime date) {
 DateTime getDateForJosephSpouseOfMary(int year, DateTime easter) {
   final DateTime date = DateTime(year, 3, 19);
   // Start of the range: Palm Sunday (one week before Easter)
-  DateTime palmSunday = easter.subtract(kdWeek);
-
+  final DateTime palmSunday = easter.subtractDays(7);
   // End of the range: Easter Octave End (one week after Easter Sunday)
-  DateTime holyWeekEnd = easter.subtract(kdDay);
+  final DateTime holyWeekEnd = easter.subtractDays(1);
   // If its during the holy week
-  if (date.isAfter(palmSunday.subtract(kdDay)) &&
-      date.isBefore(holyWeekEnd.add(kdDay))) {
-    return palmSunday.subtract(kdDay);
+  final DateTime dayBeforePalm = palmSunday.subtractDays(1);
+  final DateTime dayAfterHolyWeekEnd = holyWeekEnd.addDays(1);
+  if (date.isAfter(dayBeforePalm) &&
+      date.isBefore(dayAfterHolyWeekEnd)) {
+    return dayBeforePalm;
   }
   // If its on a sunday
   if (date.weekday == 7) {
-    return date.add(kdDay);
+    return date.addDays(1);
   }
   return date;
 }
@@ -147,18 +148,20 @@ DateTime getDateForJosephSpouseOfMary(int year, DateTime easter) {
 DateTime getDateForAnnunciationOfTheLord(int year, DateTime easter) {
   final DateTime date = DateTime(year, 3, 25);
   // Start of the range: Palm Sunday (one week before Easter)
-  DateTime palmSunday = easter.subtract(kdWeek);
+  final DateTime palmSunday = easter.subtractDays(7);
 
   // End of the range: Easter Octave End (one week after Easter Sunday)
-  DateTime easterOctaveEnd = easter.add(kdWeek);
+  final DateTime easterOctaveEnd = easter.addDays(7);
   // If its during the holy week or easter octave
-  if (date.isBefore(easterOctaveEnd.add(kdDay)) &&
-      date.isAfter(palmSunday.subtract(kdDay))) {
-    return easterOctaveEnd.add(kdDay);
+  final DateTime dayBeforePalm = palmSunday.subtractDays(1);
+  final DateTime dayAfterEasterOctave = easterOctaveEnd.addDays(1);
+  if (date.isBefore(dayAfterEasterOctave) &&
+      date.isAfter(dayBeforePalm)) {
+    return dayAfterEasterOctave;
   }
   // If its on a sunday
   if (date.weekday == 7) {
-    return date.add(kdDay);
+    return date.addDays(1);
   }
   return date;
 }

@@ -1,4 +1,5 @@
 import 'package:missal_calculation/catholic_date/calculations/liturgical_dates.dart';
+import 'package:missal_calculation/get_reading.dart';
 
 class EasterToCTKCalc {
   final LiturgicalDates _liturgicalDates;
@@ -14,13 +15,13 @@ class EasterToCTKCalc {
       _liturgicalDates.getDate(LiturgicDatesEnum.firstSundayOfAdvent);
 
   (DateTime, DateTime) easterToPentecostRange() {
-    final DateTime lastDay = _pentecost.subtract(const Duration(days: 1));
+    final DateTime lastDay = _pentecost.subtractDays(1);
     return (_easter, lastDay);
   }
 
   (DateTime, DateTime) pentecostToAdventRange() {
     final DateTime firstDay = _pentecost;
-    final DateTime lastDay = _advent.subtract(const Duration(days: 1));
+    final DateTime lastDay = _advent.subtractDays(1);
     return (firstDay, lastDay);
   }
 }

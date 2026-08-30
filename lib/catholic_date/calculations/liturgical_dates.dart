@@ -1,5 +1,5 @@
 import 'package:missal_calculation/constants/date_constants.dart';
-import 'package:missal_calculation/constants/duration_constants.dart';
+import 'package:missal_calculation/extension/date_extension.dart';
 
 enum LiturgicDatesEnum {
   epiphany,
@@ -64,13 +64,13 @@ class LiturgicalDates {
     final DateTime baptism = _baptism(epiphany);
     final DateTime easter = _easterSunday();
     final DateTime pentecost = _pentecost(easter);
-    final DateTime mostSacredHeart = pentecost.add(const Duration(days: 19));
+    final DateTime mostSacredHeart = pentecost.addDays(19);
     final DateTime fixedNativityOfStJohnTheBaptist =
         kdtNativityOfStJohnTheBaptist(year);
     final DateTime nativityOfStJohnTheBaptist =
-        mostSacredHeart.isAtSameMomentAs(fixedNativityOfStJohnTheBaptist)
-            ? fixedNativityOfStJohnTheBaptist.subtract(kdDay)
-            : fixedNativityOfStJohnTheBaptist;
+    mostSacredHeart.isAtSameMomentAs(fixedNativityOfStJohnTheBaptist)
+        ? fixedNativityOfStJohnTheBaptist.subtractDays(1)
+        : fixedNativityOfStJohnTheBaptist;
 
     _dates[LiturgicDatesEnum.epiphany] = epiphany;
     _dates[LiturgicDatesEnum.baptism] = baptism;
@@ -95,7 +95,7 @@ class LiturgicalDates {
       return DateTime(year, 1, 8);
     }
     final int daysToAdd = (7 - weekday + 7) % 7;
-    return dateTime.add(Duration(days: daysToAdd));
+    return dateTime.addDays(daysToAdd);
   }
 
   DateTime _baptism(DateTime epiphany) {
@@ -105,7 +105,7 @@ class LiturgicalDates {
     if (!isEpiphanyAfter6th) {
       daysToAdd = 7;
     }
-    return epiphany.add(Duration(days: daysToAdd));
+    return epiphany.addDays(daysToAdd);
   }
 
   DateTime _easterSunday() {
@@ -113,7 +113,7 @@ class LiturgicalDates {
     final DateTime paschalMoon = _findGoldenNumberDate(goldenNum);
     final int weekday = paschalMoon.weekday;
     final int daysToAdd = (weekday == 7) ? 7 : (7 - weekday + 7) % 7;
-    return paschalMoon.add(Duration(days: daysToAdd));
+    return paschalMoon.addDays(daysToAdd);
   }
 
   DateTime _findGoldenNumberDate(int goldenNum) {
@@ -140,22 +140,22 @@ class LiturgicalDates {
 
   DateTime _ascension(DateTime easter) {
     final int daysToAdd = isAscensionThurs ? 39 : 42;
-    return easter.add(Duration(days: daysToAdd));
+    return easter.addDays(daysToAdd);
   }
 
   DateTime _pentecost(DateTime easter) {
-    return easter.add(const Duration(days: 49));
+    return easter.addDays(49);
   }
 
   DateTime _adventSunday() {
     final DateTime christmasSunday = _sundayOfChristmas();
-    return christmasSunday.subtract(const Duration(days: 21));
+    return christmasSunday.subtractDays(21);
   }
 
   DateTime _sundayOfChristmas() {
     final DateTime dateTime = DateTime(year, 12, 25);
     final int ctmWeekday = dateTime.weekday;
-    return dateTime.subtract(Duration(days: ctmWeekday));
+    return dateTime.subtractDays(ctmWeekday);
   }
 
   DateTime _feastOfHolyFamily() {
@@ -165,7 +165,7 @@ class LiturgicalDates {
       return DateTime(year, 12, 30);
     } else {
       final int daysToAdd = (7 - ctmWeekday + 7) % 7;
-      return dateTime.add(Duration(days: daysToAdd));
+      return dateTime.addDays(daysToAdd);
     }
   }
 }
